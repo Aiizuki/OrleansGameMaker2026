@@ -35,5 +35,13 @@ namespace Core.Scripts
                 thisEvent?.Invoke();
             }
         }
+
+        public static void RemoveListener(string eventName, UnityAction listener)
+        {
+            if (Instance.eventDictionary.TryGetValue(eventName, out UnityAction action))
+            {
+                action -= listener;
+            }
+        }   
     }   
 }
