@@ -1028,6 +1028,8 @@ GameObject:
   - component: {fileID: 808659499}
   - component: {fileID: 808659500}
   - component: {fileID: 808659501}
+  - component: {fileID: 808659502}
+  - component: {fileID: 808659503}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -1174,6 +1176,7 @@ MonoBehaviour:
   _moveRightAction: {fileID: -2786844599039569461, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _moveForwardAction: {fileID: 4099267117935322066, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _moveBackwardAction: {fileID: 4619430013341611809, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _animatorController: {fileID: 808659502}
   _settings: {fileID: 11400000, guid: 214345750932be049a0eba140271c176, type: 2}
 --- !u!114 &808659501
 MonoBehaviour:
@@ -1189,6 +1192,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _InteractAction: {fileID: 6708623400076282759, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   Interactible: {fileID: 0}
+--- !u!95 &808659502
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808659494}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 78f50c88913675044b12a4d7a0e8c970, type: 3}
+  m_Controller: {fileID: 9100000, guid: b831f8f0905dd7043812a255fa49b613, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &808659503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808659494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3daccd529bc7a9e49b6c326f631d331b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  _whackAction: {fileID: 2083399663850386388, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  _animatorController: {fileID: 808659502}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -2171,7 +2210,12 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 5866666021909216657, guid: 78f50c88913675044b12a4d7a0e8c970, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5866666021909216657, guid: 78f50c88913675044b12a4d7a0e8c970, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

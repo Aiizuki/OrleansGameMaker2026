@@ -1,3 +1,4 @@
+using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,7 @@ public class MovementScript : MonoBehaviour
     [SerializeField] private InputActionReference _moveRightAction;
     [SerializeField] private InputActionReference _moveForwardAction;
     [SerializeField] private InputActionReference _moveBackwardAction;
+    [SerializeField] private Animator _animatorController;
 
     [SerializeField] private CoreGameSettings _settings;
 
@@ -84,6 +86,11 @@ public class MovementScript : MonoBehaviour
         if (_moveDirection.sqrMagnitude > 0)
         {
             transform.rotation = Quaternion.LookRotation(_moveDirection);
+            _animatorController.SetBool("Walking", true);
+        }
+        else
+        {
+            _animatorController.SetBool("Walking", false);
         }
     }
 
