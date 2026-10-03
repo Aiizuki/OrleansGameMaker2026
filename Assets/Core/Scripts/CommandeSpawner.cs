@@ -12,15 +12,18 @@ namespace Core.Scripts
 {
     public class CommandeSpawner : MonoBehaviour
     {
-        [SerializeField] private List<Plat> _lstSpawnablePlats;
+        [SerializeField] private CoreGameSettings _settings;
         [SerializeField] private List<GameObject> _lstSpawnPoints;
         [SerializeField] private GameObject _orderPrefab;
 
+        private List<Plat> _lstSpawnablePlats;
+        
         // Point de spawn -> commande qui l'occupe (null si libre)
         public Dictionary<GameObject, GameObject> _spawnMatrix;
 
         void Awake()
         {
+            _lstSpawnablePlats = _settings.LstAvailablePlats;
             if (_lstSpawnablePlats == null || _lstSpawnablePlats.Count == 0)
             {
                 Debug.LogError("Aucun plat dans la liste" + Environment.NewLine + new StackTrace());

@@ -9,9 +9,25 @@ public class CommandeUIDisplayer : MonoBehaviour
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private GameObject ingredientPanel;
 
+    // Le GameObject doit rester actif pour écouter les events : on masque l'UI via le CanvasGroup
+    private CanvasGroup _canvasGroup;
+
     void Awake()
     {
+        if (!TryGetComponent(out _canvasGroup))
+        {
+            _canvasGroup = gameObject.AddComponent<CanvasGroup>();
+        }
+        SetVisible(false);
+
         InitEvents();
+    }
+
+    private void SetVisible(bool visible)
+    {
+        _canvasGroup.alpha = visible ? 1f : 0f;
+        _canvasGroup.interactable = visible;
+        _canvasGroup.blocksRaycasts = visible;
     }
 
     private void OnDestroy()
@@ -34,8 +50,7 @@ public class CommandeUIDisplayer : MonoBehaviour
             ingredientUI.GetComponent<TextMeshProUGUI>().text = ingredient.Nom;
         }
 
-        if(!gameObject.activeSelf)
-        gameObject.SetActive(true);
+        SetVisible(true);
     }
 
     #region UnityEvents

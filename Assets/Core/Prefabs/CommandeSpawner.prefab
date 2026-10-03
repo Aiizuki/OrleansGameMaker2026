@@ -333,9 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 178b8dcd61fd6004089a287d674ce876, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Scripts.CommandeSpawner
-  _lstSpawnablePlats:
-  - {fileID: 11400000, guid: a2a7949cdd3ec7f4bbae9027baf6fa7d, type: 2}
-  - {fileID: 11400000, guid: d93bb7e824b44d74790ff8ad57131f60, type: 2}
+  _settings: {fileID: 11400000, guid: 214345750932be049a0eba140271c176, type: 2}
   _lstSpawnPoints:
   - {fileID: 1174510651888143332}
   - {fileID: 4348270043574999249}
