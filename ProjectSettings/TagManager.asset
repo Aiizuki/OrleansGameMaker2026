@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Board
   - Product
+  - OrderPreparer
+  - Bin
   layers:
   - Default
   - TransparentFX

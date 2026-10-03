@@ -96,6 +96,12 @@ public class PlayerInteractionHandler : MonoBehaviour
             return;
         }
 
+        if (Interactible.gameObject.CompareTag("OrderPreparer"))
+        {
+            Debug.Log("Interaction with OrderPreparer");
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.OrderPrepared));
+        }
+
         if (Interactible.gameObject.CompareTag("Board"))
         {
             if (_currentOrder != null)

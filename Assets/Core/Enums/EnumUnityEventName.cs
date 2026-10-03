@@ -38,6 +38,9 @@ namespace Core.Enums
 
         [Description("The player's inventory has been put back into the storage (param: the current order Plat)")]
         InventoryFlushed,
+        
+        [Description("The player has collected all correct ingredients")]
+        IngredientsCollected,
 
         #endregion InGameEvents
         
