@@ -64,7 +64,6 @@ public class OrderPreparer : MonoBehaviour
         bool success = !_hasWrongIngredient && _collectedCount == _currentOrder.Ingredients.Count;
         if (success)
             dish.SetSuccess();
-        else
             dish.SetFailed();
 
         _currentOrder = null;
