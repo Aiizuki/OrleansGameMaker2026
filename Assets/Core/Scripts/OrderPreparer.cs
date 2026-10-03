@@ -32,6 +32,8 @@ public class OrderPreparer : MonoBehaviour
         _currentOrder = plat;
         _collectedCount = 0;
         _hasWrongIngredient = false;
+        // Aussi appelé à InventoryFlushed : la commande repart de zéro, plus de contour
+        GetComponent<Outliner>().HideOutline();
     }
 
     private void OnIngredientCollected(Plat ingredient)
@@ -64,8 +66,10 @@ public class OrderPreparer : MonoBehaviour
         bool success = !_hasWrongIngredient && _collectedCount == _currentOrder.Ingredients.Count;
         if (success)
             dish.SetSuccess();
+        else
             dish.SetFailed();
 
+        GetComponent<Outliner>().HideOutline();
         _currentOrder = null;
         _collectedCount = 0;
         _hasWrongIngredient = false;
