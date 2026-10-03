@@ -61,7 +61,9 @@ public class CleaningIAScript : MonoBehaviour
             //end of work
             if (_isFailing)
             {
+                
                 MyStation.GetComponent<StationScript>().objectAtInventory.GetComponent<PreparedDish>().FailDish();
+                _isFailing = false;
             }
             MyStation.GetComponent<StationScript>().objectAtInventory.GetComponent<PreparedDish>().SetState(MyStation.GetComponent<StationScript>().getStationStatus());
             _aiState = AiState.Idle;
