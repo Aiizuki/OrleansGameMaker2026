@@ -28,6 +28,9 @@ namespace Core.Enums
         [Description("When the board is full, no more order is created")]
         StopOrderSpawn,
         
+        [Description("When the user goes to storage, switch the camera position")]
+        SwitchCameraPosition,
+        
         #endregion BackgroundEvents
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Core.Enums;
+using JetBrains.Annotations;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
@@ -11,15 +12,18 @@ namespace Core.Scripts
 {
     public class CommandeSpawner : MonoBehaviour
     {
-        [SerializeField] private List<Plat> _lstSpawnablePlats;
+        [SerializeField] private CoreGameSettings _settings;
         [SerializeField] private List<GameObject> _lstSpawnPoints;
         [SerializeField] private GameObject _orderPrefab;
 
+        private List<Plat> _lstSpawnablePlats;
+        
         // Point de spawn -> commande qui l'occupe (null si libre)
         public Dictionary<GameObject, GameObject> _spawnMatrix;
 
         void Awake()
         {
+            _lstSpawnablePlats = _settings.LstAvailablePlats;
             if (_lstSpawnablePlats == null || _lstSpawnablePlats.Count == 0)
             {
                 Debug.LogError("Aucun plat dans la liste" + Environment.NewLine + new StackTrace());
@@ -70,17 +74,15 @@ namespace Core.Scripts
             }
         }
 
-        void TakeCommande(GameObject commande)
+        void TakeCommande()
         {
             // En debug (éditeur / development build), sans commande fournie : on prend la première de la matrice
-            if (commande is null && Debug.isDebugBuild)
+
+            GameObject commande = _spawnMatrix.Values.FirstOrDefault(x => x is not null);
+            if (commande is null)
             {
-                commande = _spawnMatrix.Values.FirstOrDefault(x => x is not null);
-                if (commande is null)
-                {
-                    Debug.LogWarning("[Debug] Aucune commande dans la matrice à retirer");
-                    return;
-                }
+                Debug.LogWarning("[Debug] Aucune commande dans la matrice à retirer");
+                return;
             }
 
             var orderTicket = _spawnMatrix.FirstOrDefault(x => x.Value == commande);
@@ -110,13 +112,13 @@ namespace Core.Scripts
         void InitEvents()
         {
             UnityEventManager.AddListener(nameof(EnumUnityEventName.SpawnCommande), SpawnCommande);
-            UnityEventManager.AddListener<GameObject>(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
+            UnityEventManager.AddListener(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
         }
 
         void CancelEvents()
         {
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.SpawnCommande), SpawnCommande);
-            UnityEventManager.RemoveListener<GameObject>(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
+            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
         }
 
         #endregion UnityEvents

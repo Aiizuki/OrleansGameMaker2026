@@ -1,4 +1,6 @@
 using System;
+using Core.Enums;
+using Core.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +9,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     [Header("Inputs")]
     [SerializeField] private InputActionReference _InteractAction;
 
+    public GameObject Interactible = null; 
     private bool _isInteracting = false;
 
     private void Awake()
@@ -28,26 +31,22 @@ public class PlayerInteractionHandler : MonoBehaviour
     {
         _InteractAction.action.Enable();
     }
-    
+        
     private void Interact(InputAction.CallbackContext obj)
     {
-        
-        //Do your thing 
+        if (Interactible != null)
+        {
+            if (Interactible.gameObject.CompareTag("Board"))
+            {
+                Debug.Log("Interact board");
+                UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.TakeOrder));
+            }
+        }
+        Debug.Log("Nothing to interact with");
     }
 
     private void RevokeEvents()
     {
         _InteractAction.action.performed -= Interact;
-    }
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

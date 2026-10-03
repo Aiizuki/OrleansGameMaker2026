@@ -1,47 +1,40 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class MovementScript : MonoBehaviour
 {
-    [Header("Inputs")]
-    [SerializeField] private InputActionReference _moveLeftAction;
+    [Header("Inputs")] [SerializeField] private InputActionReference _moveLeftAction;
     [SerializeField] private InputActionReference _moveRightAction;
     [SerializeField] private InputActionReference _moveForwardAction;
     [SerializeField] private InputActionReference _moveBackwardAction;
 
-    public int speed;
-    
+    [SerializeField] private CoreGameSettings _settings;
+
     private Vector3 _moveDirection;
-    
+
     private bool _isMovingLeft = false;
     private bool _isMovingRight = false;
     private bool _isMovingForward = false;
     private bool _isMovingBackward = false;
-   
+
 
     private void Awake()
     {
-        var actionMap =  InputSystem.actions.FindActionMap("Inpute");
+        var actionMap = InputSystem.actions.FindActionMap("Inpute");
         InitEvents();
     }
-
-    private void InitEvents()
+    
+    void OnDestroy()
     {
-        _moveLeftAction.action.performed += MoveLeft;
-        _moveRightAction.action.performed += MoveRight;
-        _moveForwardAction.action.performed += MoveForward;
-        _moveBackwardAction.action.performed += MoveBackward;
-        
+        RevokeEvents();
     }
 
-    void OnEnable()
+    // Update is called once per frame
+    void FixedUpdate()
     {
-        _moveLeftAction.action.Enable();
-        _moveRightAction.action.Enable();
-        _moveForwardAction.action.Enable();
-        _moveBackwardAction.action.Enable();
+        HandleMovement();
     }
+
 
     private void MoveLeft(InputAction.CallbackContext obj)
     {
@@ -62,7 +55,43 @@ public class MovementScript : MonoBehaviour
     {
         _isMovingBackward = !_isMovingBackward;
     }
-    
+
+    private void HandleMovement()
+    {
+        _moveDirection = Vector3.zero;
+        if (_isMovingLeft)
+        {
+            _moveDirection.x -= 1;
+        }
+
+        if (_isMovingRight)
+        {
+            _moveDirection.x += 1;
+        }
+
+        if (_isMovingForward)
+        {
+            _moveDirection.z += 1;
+        }
+
+        if (_isMovingBackward)
+        {
+            _moveDirection.z -= 1;
+        }
+
+        _moveDirection.Normalize();
+        gameObject.GetComponent<Rigidbody>().linearVelocity = _moveDirection * _settings.Speed;
+    }
+
+    #region UnityEvents
+
+    private void InitEvents()
+    {
+        _moveLeftAction.action.performed += MoveLeft;
+        _moveRightAction.action.performed += MoveRight;
+        _moveForwardAction.action.performed += MoveForward;
+        _moveBackwardAction.action.performed += MoveBackward;
+    }
 
     private void RevokeEvents()
     {
@@ -72,39 +101,5 @@ public class MovementScript : MonoBehaviour
         _moveBackwardAction.action.performed -= MoveBackward;
     }
 
-    private void HandleMovement()
-    {
-        _moveDirection = Vector3.zero;
-        if (_isMovingLeft)
-        {
-            _moveDirection.x -= 1;
-        }
-        if (_isMovingRight)
-        {
-            _moveDirection.x += 1;
-        }
-        if (_isMovingForward)
-        {
-            _moveDirection.z += 1;
-        }
-        if (_isMovingBackward) 
-        {
-            _moveDirection.z -= 1;
-        }
-        _moveDirection.Normalize();
-        gameObject.GetComponent<Rigidbody>().linearVelocity = _moveDirection * speed;
-        
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-    
-    // Update is called once per frame
-    void FixedUpdate()
-    {
-        HandleMovement();
-    }
+    #endregion UnityEvents
 }
