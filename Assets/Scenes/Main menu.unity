@@ -845,6 +845,7 @@ GameObject:
   - component: {fileID: 1675102677}
   - component: {fileID: 1675102679}
   - component: {fileID: 1675102678}
+  - component: {fileID: 1675102680}
   m_Layer: 0
   m_Name: foutoir
   m_TagString: Untagged
@@ -891,6 +892,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a90b65caf6774ca6542fa842ccde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionHandler
+--- !u!114 &1675102680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1675102675}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39442ceff47d41ff98d4d1a97bd62927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Scripts.TimeManager
+  _settings: {fileID: 11400000, guid: 38966c563ed80b448993271bb8e18300, type: 2}
 --- !u!1 &1677208247
 GameObject:
   m_ObjectHideFlags: 0

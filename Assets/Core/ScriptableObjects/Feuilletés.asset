@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4727778acd0fa1b45ac631589c6d318f, type: 3}
+  m_Name: "Feuillet\xE9s"
+  m_EditorClassIdentifier: Assembly-CSharp::Plat
+  Nom: "Feuillet\xE9s au Sainte-Maure de tourraine"
+  Icon: {fileID: 0}
+  Ingredients:
+  - {fileID: 11400000, guid: b7e1d60e52b39a64893424d7d54898bd, type: 2}
+  - {fileID: 11400000, guid: e562322fc1298904fada5f65d229ecdc, type: 2}
+  - {fileID: 11400000, guid: 28ecb9d5cd88052479394cb9bfc0e80d, type: 2}

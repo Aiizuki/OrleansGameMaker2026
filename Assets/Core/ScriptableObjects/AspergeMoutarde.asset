@@ -10,6 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4727778acd0fa1b45ac631589c6d318f, type: 3}
-  m_Name: Patate
+  m_Name: AspergeMoutarde
   m_EditorClassIdentifier: Assembly-CSharp::Plat
-  Nom: Pomme de terre
+  Nom: "Moutarde d'Orl\xE9ans aux Asperges"
+  Icon: {fileID: 0}
+  Ingredients:
+  - {fileID: 11400000, guid: d7fc1c784d4bde64ab26f8f280b8e58d, type: 2}
+  - {fileID: 11400000, guid: 8b6b5164d16c40744a040d8abf357c83, type: 2}

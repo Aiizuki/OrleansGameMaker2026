@@ -54,12 +54,14 @@ namespace Core.Scripts
 
         void InitEvents()
         {
+            UnityEventManager.AddListener(nameof(EnumUnityEventName.GameStart), StartOrderSpawn);
             UnityEventManager.AddListener(nameof(EnumUnityEventName.StartOrderSpawn), StartOrderSpawn);
             UnityEventManager.AddListener(nameof(EnumUnityEventName.StopOrderSpawn), StopOrderSpawn);
         }
 
         void CancelEvents()
         {
+            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.GameStart), StartOrderSpawn);
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StartOrderSpawn), StartOrderSpawn);
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StopOrderSpawn), StopOrderSpawn);
         }
