@@ -81,6 +81,10 @@ public class MovementScript : MonoBehaviour
 
         _moveDirection.Normalize();
         gameObject.GetComponent<Rigidbody>().linearVelocity = _moveDirection * _settings.Speed;
+        if (_moveDirection.sqrMagnitude > 0)
+        {
+            transform.rotation = Quaternion.LookRotation(_moveDirection);
+        }
     }
 
     #region UnityEvents
