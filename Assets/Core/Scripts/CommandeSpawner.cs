@@ -73,7 +73,6 @@ namespace Core.Scripts
 
         void TakeCommande()
         {
-            Debug.Log("POUET");
             // En debug (éditeur / development build), sans commande fournie : on prend la première de la matrice
 
             GameObject commande = _spawnMatrix.Values.FirstOrDefault(x => x is not null);

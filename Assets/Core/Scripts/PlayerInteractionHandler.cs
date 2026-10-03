@@ -34,11 +34,15 @@ public class PlayerInteractionHandler : MonoBehaviour
         
     private void Interact(InputAction.CallbackContext obj)
     {
-        if (Interactible.gameObject.CompareTag("Board"))
+        if (Interactible != null)
         {
-            Debug.Log("Interact board");
-            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.TakeOrder));
+            if (Interactible.gameObject.CompareTag("Board"))
+            {
+                Debug.Log("Interact board");
+                UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.TakeOrder));
+            }
         }
+        Debug.Log("Nothing to interact with");
     }
 
     private void RevokeEvents()
