@@ -55,7 +55,7 @@ namespace Core.Scripts
             }
 
             var plat = _lstSpawnablePlats[Random.Range(0, _lstSpawnablePlats.Count)];
-            Debug.Log("Je spawn le plat" + plat.Nom);
+            //Debug.Log("Je spawn le plat" + plat.Nom);
             var commande = Instantiate(_orderPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, transform);
             if (!commande.TryGetComponent(out OrderTicket ticket))
             {

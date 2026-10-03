@@ -37,7 +37,10 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     private void RevokeEvents()
     {
-        _InteractAction.action.performed -= Interact;
+        if (_InteractAction)
+        {
+            _InteractAction.action.performed -= Interact;
+        }
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
