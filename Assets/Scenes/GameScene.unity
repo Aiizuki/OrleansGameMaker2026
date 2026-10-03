@@ -1330,6 +1330,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _whackAction: {fileID: 2083399663850386388, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   _animatorController: {fileID: 808659502}
+  CurrentVictim: {fileID: 0}
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1591,6 +1592,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3484143649806995523, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
+      propertyPath: chanceToFail
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 9193850810371614546, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_Name
       value: IAGroup
@@ -1729,6 +1734,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Core.Scripts.AngrySliderHandler
   _slider: {fileID: 908222075}
   _settings: {fileID: 11400000, guid: 38966c563ed80b448993271bb8e18300, type: 2}
+  _warningColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  _dangerColor: {r: 1, g: 0, b: 0, a: 1}
+  _warningThreshold: 0.5
+  _dangerThreshold: 0.2
+  _colorTransitionDuration: 0.5
 --- !u!1 &955276671
 GameObject:
   m_ObjectHideFlags: 0

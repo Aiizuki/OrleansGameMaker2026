@@ -366,7 +366,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2669362929902682409}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -501,7 +501,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3750156402186993715}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -1426,7 +1426,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6993614908319759521}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -1823,10 +1823,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleaningIAScript
   hands: {fileID: 2001464914426488725}
+  exclamationMark: {fileID: 8342979369076923281}
   speed: 0.1
-  workTime: 3
-  failTime: 2
-  chanceToFail: 0.3
+  workTime: 5
+  failTime: 8
+  chanceToFail: 0.2
   PathToInput:
   - {fileID: 5897125690770063128}
   PathFromInput:
@@ -1958,10 +1959,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleaningIAScript
   hands: {fileID: 6327613060062025465}
+  exclamationMark: {fileID: 1174338811714887183}
   speed: 0.1
   workTime: 5
-  failTime: 2
-  chanceToFail: 0.3
+  failTime: 8
+  chanceToFail: 0.2
   PathToInput:
   - {fileID: 8325400414654052109}
   PathFromInput:
@@ -2088,10 +2090,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   hands: {fileID: 2333636085478918363}
+  exclamationMark: {fileID: 1797126130649692282}
   speed: 0.1
-  workTime: 4
-  failTime: 2
-  chanceToFail: 0.3
+  workTime: 5
+  failTime: 8
+  chanceToFail: 0.2
   PathToInput:
   - {fileID: 6902600680170733346}
   PathFromInput:

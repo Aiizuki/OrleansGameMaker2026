@@ -19,6 +19,7 @@ public enum MoveDestination
 public class CleaningIAScript : MonoBehaviour
 { 
     public GameObject hands;
+    public Canvas exclamationMark;
     public float speed;
     public float workTime;
     public float failTime;
@@ -40,12 +41,14 @@ public class CleaningIAScript : MonoBehaviour
     private int _moveStep;
     private Vector3 _movementDirection;
     private bool _isFailing;
+    private Camera _camera;
 
     private void Start()
     {
         _workTimer = workTime;
         _theStation = MyStation;
         _aiState = AiState.Idle;
+        _camera = FindFirstObjectByType<Camera>();
     }
 
     private void Update()
@@ -55,6 +58,10 @@ public class CleaningIAScript : MonoBehaviour
         {
             //working
             _workTimer -= Time.deltaTime;
+            if (exclamationMark.isActiveAndEnabled)
+            {
+                exclamationMark.transform.LookAt(_camera.transform);
+            }
         }
 
         if (_workTimer <= 0 && _aiState == AiState.Working)
@@ -65,6 +72,7 @@ public class CleaningIAScript : MonoBehaviour
                 
                 MyStation.GetComponent<StationScript>().objectAtInventory.GetComponent<PreparedDish>().FailDish();
                 _isFailing = false;
+                exclamationMark.enabled = false;
             }
             MyStation.GetComponent<StationScript>().objectAtInventory.GetComponent<PreparedDish>().SetState(MyStation.GetComponent<StationScript>().getStationStatus());
             _aiState = AiState.Idle;
@@ -217,12 +225,13 @@ public class CleaningIAScript : MonoBehaviour
 
     private void Work()
     {
-        
+        exclamationMark.enabled =  false;
         _aiState = AiState.Working;
         float roll= Random.Range(0f, 1f);
         if (roll < chanceToFail && _isFailing == false)
         {
             // Worker Failing
+            exclamationMark.enabled = true;
             _workTimer = failTime;
             _isFailing = true;
         }
