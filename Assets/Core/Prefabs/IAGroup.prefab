@@ -659,7 +659,7 @@ Transform:
   m_GameObject: {fileID: 6812416161067126748}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.92, y: 1.004, z: 0}
+  m_LocalPosition: {x: -0.487, y: 1.004, z: -1.626}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -991,6 +991,8 @@ MonoBehaviour:
   hands: {fileID: 2001464914426488725}
   speed: 0.1
   workTime: 3
+  failTime: 2
+  chanceToFail: 0.3
   PathToInput:
   - {fileID: 5897125690770063128}
   PathFromInput:
@@ -1089,6 +1091,8 @@ MonoBehaviour:
   hands: {fileID: 6327613060062025465}
   speed: 0.1
   workTime: 5
+  failTime: 2
+  chanceToFail: 0.3
   PathToInput:
   - {fileID: 8325400414654052109}
   PathFromInput:
@@ -1182,6 +1186,8 @@ MonoBehaviour:
   hands: {fileID: 2333636085478918363}
   speed: 0.1
   workTime: 4
+  failTime: 2
+  chanceToFail: 0.3
   PathToInput:
   - {fileID: 6902600680170733346}
   PathFromInput:

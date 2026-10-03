@@ -11,6 +11,7 @@ public class OrderPreparer : MonoBehaviour
 {
     [SerializeField] private PreparedDish _preparedDishPrefab;
     [SerializeField] private Transform _spawnPoint;
+    [SerializeField] private GameObject _waitingStation;
 
     private Plat _currentOrder;
     private int _collectedCount;
@@ -63,9 +64,16 @@ public class OrderPreparer : MonoBehaviour
         // Appel direct sur l'instance pour ne pas recolorer les autres plats déjà posés
         bool success = !_hasWrongIngredient && _collectedCount == _currentOrder.Ingredients.Count;
         if (success)
+        {
             dish.SetSuccess();
+        }
+        else
+        {
             dish.SetFailed();
-
+        }
+        
+        _waitingStation.GetComponent<WaitingStation>().AddObjectToWaiting(dish.gameObject);
+        
         _currentOrder = null;
         _collectedCount = 0;
         _hasWrongIngredient = false;

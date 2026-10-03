@@ -31,13 +31,15 @@ public class WaitingStation : MonoBehaviour
                 if (CheckToPush())
                 {
                     linkedStation.GetComponent<StationScript>().objectAtInput = objectsWaiting[0];
-                    objectsWaiting[0].transform.parent = linkedStation.GetComponent<StationScript>().objectAtInput.transform;
-                    objectsPlaces[0].transform.localPosition = Vector3.zero;
+                    objectsWaiting[0].transform.parent = linkedStation.GetComponent<StationScript>().placeAtInput.transform;
+                    objectsWaiting[0].transform.localPosition = Vector3.zero;
+                    objectsWaiting.RemoveAt(0);
                     if (objectsWaiting.Count > 1)
                     {
                         for (int i = 1; i < (objectsWaiting.Count - 1); i++)
                         {
                             objectsWaiting[i-1] = objectsWaiting[i];
+                            objectsWaiting.RemoveAt(i);
                         }
                     }
                     UpdateVisuals();
@@ -80,6 +82,19 @@ public class WaitingStation : MonoBehaviour
         {
             objectsWaiting.Add(other.gameObject);
             UpdateVisuals();
+        }
+    }
+
+    public void AddObjectToWaiting(GameObject _objectToWaiting)
+    {
+        if (objectsWaiting.Count < objectsPlaces.Count)
+        {
+            objectsWaiting.Add(_objectToWaiting);
+            UpdateVisuals();
+        }
+        else
+        {
+            Destroy(_objectToWaiting);
         }
     }
 }

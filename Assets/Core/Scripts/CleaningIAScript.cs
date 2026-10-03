@@ -61,7 +61,7 @@ public class CleaningIAScript : MonoBehaviour
             //end of work
             if (_isFailing)
             {
-                //as fucked up the meal
+                // fuck
             }
             _aiState = AiState.Idle;
         }
@@ -142,7 +142,6 @@ public class CleaningIAScript : MonoBehaviour
             {
                 if (_moveStep < GetPath(_path).Count - 1 )
                 {
-                    Debug.Log("move step");
                     _moveStep++;
                 }
                 else
@@ -220,6 +219,7 @@ public class CleaningIAScript : MonoBehaviour
         if (roll < chanceToFail && _isFailing == false)
         {
             // Worker Failing
+            Debug.Log("Chie dans le mou");
             _workTimer = failTime;
             _isFailing = true;
         }
