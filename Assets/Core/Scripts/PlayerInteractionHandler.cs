@@ -31,6 +31,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     
     private void Interact(InputAction.CallbackContext obj)
     {
+        
         //Do your thing 
     }
 
