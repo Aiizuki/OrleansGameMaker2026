@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -235,6 +236,27 @@ public class CleaningIAScript : MonoBehaviour
         if (_aiState == AiState.Working)
         {
             Work();
+            Debug.Log("AÏEUH :(");
+        }
+        else
+        {
+            Debug.Log("MAIS J'AI RIEN FAIT :(");
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<WhackingHandler>().CurrentVictim = this.gameObject;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<WhackingHandler>().CurrentVictim = null;
         }
     }
 }

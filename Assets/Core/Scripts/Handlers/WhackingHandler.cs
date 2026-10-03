@@ -6,6 +6,7 @@ public class WhackingHandler : MonoBehaviour
 {
     [Header("Inputs")] [SerializeField] private InputActionReference _whackAction;
     [SerializeField] private Animator _animatorController;
+    public GameObject CurrentVictim = null;
 
     private void Awake()
     {
@@ -31,8 +32,17 @@ public class WhackingHandler : MonoBehaviour
 
     private void Whack(InputAction.CallbackContext obj)
     {
-        
         _animatorController.SetTrigger("Hit");
+
+        if (CurrentVictim != null)
+        {
+            Debug.Log("TIENS PRENDS CA BATAR");
+            CurrentVictim.gameObject.GetComponent<CleaningIAScript>().Whacked();
+        }
+        else
+        {
+            Debug.Log("*se pougne*");
+        }
     }
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
