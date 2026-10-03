@@ -220,7 +220,6 @@ public class CleaningIAScript : MonoBehaviour
         if (roll < chanceToFail && _isFailing == false)
         {
             // Worker Failing
-            Debug.Log("Chie dans le mou");
             _workTimer = failTime;
             _isFailing = true;
         }
@@ -228,6 +227,14 @@ public class CleaningIAScript : MonoBehaviour
         {
             _isFailing = false;
             _workTimer = workTime;
+        }
+    }
+
+    public void Whacked()
+    {
+        if (_aiState == AiState.Working)
+        {
+            Work();
         }
     }
 }
