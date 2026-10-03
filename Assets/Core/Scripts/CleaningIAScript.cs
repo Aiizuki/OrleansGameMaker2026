@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public enum AiState {
     Working,
@@ -20,6 +20,8 @@ public class CleaningIAScript : MonoBehaviour
     public GameObject hands;
     public float speed;
     public float workTime;
+    public float failTime;
+    public float chanceToFail;
     public List<GameObject> PathToInput;
     public List<GameObject> PathFromInput;
     public List<GameObject> PathToOutput;
@@ -36,6 +38,7 @@ public class CleaningIAScript : MonoBehaviour
     private GameObject _theStation;
     private int _moveStep;
     private Vector3 _movementDirection;
+    private bool _isFailing;
 
     private void Start()
     {
@@ -56,6 +59,10 @@ public class CleaningIAScript : MonoBehaviour
         if (_workTimer <= 0 && _aiState == AiState.Working)
         {
             //end of work
+            if (_isFailing)
+            {
+                //as fucked up the meal
+            }
             _aiState = AiState.Idle;
         }
         
@@ -102,7 +109,7 @@ public class CleaningIAScript : MonoBehaviour
             }
             else if (Vector3.Distance(transform.position, _theStation.GetComponent<StationScript>().StationInput.transform.position) <= 0.2f)
             {
-                // When IA as objetc in hands and is at input spot
+                // When IA as object in hands and is at input spot
                 TakeInHands(_theStation.GetComponent<StationScript>().objectAtInput);
                 _theStation.GetComponent<StationScript>().objectAtInput = null;
                 // Return to Station
@@ -116,6 +123,7 @@ public class CleaningIAScript : MonoBehaviour
                 _objectInHands.transform.localPosition = Vector3.zero;
                 _objectInHands = null;
                 // Work
+                transform.rotation = GetPath(_path)[_moveStep].transform.rotation;
                 Work();
             }
         }
@@ -127,6 +135,7 @@ public class CleaningIAScript : MonoBehaviour
         {
             _movementDirection = GetPath(_path)[_moveStep].transform.position - transform.position;
             _movementDirection.Normalize();
+            transform.rotation = Quaternion.LookRotation(_movementDirection);
             _movementDirection = _movementDirection * speed;
             
             if (Vector3.Distance(transform.position, GetPath(_path)[_moveStep].transform.position) < 0.1f)
@@ -138,6 +147,7 @@ public class CleaningIAScript : MonoBehaviour
                 }
                 else
                 {
+                    transform.rotation = GetPath(_path)[_moveStep].transform.rotation;
                     _aiState = AiState.Idle;
                 }
             }
@@ -204,7 +214,19 @@ public class CleaningIAScript : MonoBehaviour
 
     private void Work()
     {
-        _workTimer = workTime;
+        
         _aiState = AiState.Working;
+        float roll= Random.Range(0f, 1f);
+        if (roll < chanceToFail && _isFailing == false)
+        {
+            // Worker Failing
+            _workTimer = failTime;
+            _isFailing = true;
+        }
+        else
+        {
+            _isFailing = false;
+            _workTimer = workTime;
+        }
     }
 }
