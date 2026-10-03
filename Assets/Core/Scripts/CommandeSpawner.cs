@@ -20,7 +20,7 @@ namespace Core.Scripts
         
         // Point de spawn -> commande qui l'occupe (null si libre)
         public Dictionary<GameObject, GameObject> _spawnMatrix;
-
+        
         void Awake()
         {
             _lstSpawnablePlats = _settings.LstAvailablePlats;
@@ -36,14 +36,14 @@ namespace Core.Scripts
             }
 
             InitEvents();
-
+            
             _spawnMatrix = new Dictionary<GameObject, GameObject>();
             foreach (var spawnPoint in _lstSpawnPoints)
             {
                 _spawnMatrix.Add(spawnPoint, null);
             }
         }
-
+        
         private void OnDestroy()
         {
             CancelEvents();
