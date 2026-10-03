@@ -18,6 +18,7 @@ public class MovementScript : MonoBehaviour
     private bool _isMovingRight = false;
     private bool _isMovingForward = false;
     private bool _isMovingBackward = false;
+   
 
     private void Awake()
     {
@@ -31,6 +32,7 @@ public class MovementScript : MonoBehaviour
         _moveRightAction.action.performed += MoveRight;
         _moveForwardAction.action.performed += MoveForward;
         _moveBackwardAction.action.performed += MoveBackward;
+        
     }
 
     void OnEnable()
@@ -60,6 +62,7 @@ public class MovementScript : MonoBehaviour
     {
         _isMovingBackward = !_isMovingBackward;
     }
+    
 
     private void RevokeEvents()
     {
@@ -74,19 +77,19 @@ public class MovementScript : MonoBehaviour
         _moveDirection = Vector3.zero;
         if (_isMovingLeft)
         {
-            _moveDirection.x += 1;
+            _moveDirection.x -= 1;
         }
         if (_isMovingRight)
         {
-            _moveDirection.x -= 1;
+            _moveDirection.x += 1;
         }
         if (_isMovingForward)
         {
-            _moveDirection.z -= 1;
+            _moveDirection.z += 1;
         }
         if (_isMovingBackward) 
         {
-            _moveDirection.z += 1;
+            _moveDirection.z -= 1;
         }
         _moveDirection.Normalize();
         gameObject.GetComponent<Rigidbody>().linearVelocity = _moveDirection * speed;
