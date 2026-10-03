@@ -6,6 +6,9 @@ namespace Core.Enums
     {
         GameStart,
         GameOver,
+
+        [Description("Starts everything driven by time (order spawn, angry slider decrease)")]
+        StartTime,
         
         #region InGameEvents
         
@@ -41,6 +44,9 @@ namespace Core.Enums
         
         [Description("The player has collected all correct ingredients")]
         IngredientsCollected,
+
+        [Description("Raises the angry slider by the amount set in TimeSettings")]
+        RaiseAngrySlider,
 
         #endregion InGameEvents
         
