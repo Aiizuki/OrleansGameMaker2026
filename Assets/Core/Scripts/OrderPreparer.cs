@@ -69,6 +69,8 @@ public class OrderPreparer : MonoBehaviour
         else
             dish.SetFailed();
 
+        dish.Plat = _currentOrder;
+
         GetComponent<Outliner>().HideOutline();
         _currentOrder = null;
         _collectedCount = 0;

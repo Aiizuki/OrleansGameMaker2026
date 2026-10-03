@@ -10,6 +10,7 @@ public class PreparedDish : MonoBehaviour
 {
     [SerializeField] private Material _successMaterial;
     [SerializeField] private Material _failureMaterial;
+    public Plat Plat;
 
     void Awake()
     {
@@ -29,6 +30,16 @@ public class PreparedDish : MonoBehaviour
     public void SetFailed()
     {
         ApplyMaterial(_failureMaterial);
+    }
+
+    public void SetState(EnumDishStatus status)
+    {
+        Plat.DishStatus = status;
+    }
+
+    public void FailDish()
+    {
+        Plat.IsFailed = true;
     }
 
     private void ApplyMaterial(Material material)
