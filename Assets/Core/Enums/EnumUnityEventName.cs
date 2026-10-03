@@ -31,6 +31,9 @@ namespace Core.Enums
         [Description("When the user goes to storage, switch the camera position")]
         SwitchCameraPosition,
         
+        [Description("Spawns a storage box in the storage room")]
+        SpawnStorage,
+        
         #endregion BackgroundEvents
     }
 }

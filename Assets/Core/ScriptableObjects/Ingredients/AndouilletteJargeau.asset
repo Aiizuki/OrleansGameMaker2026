@@ -13,4 +13,6 @@ MonoBehaviour:
   m_Name: AndouilletteJargeau
   m_EditorClassIdentifier: Assembly-CSharp::Plat
   Nom: Andouillette de Jargeau
-  Ingredients: []
+  Icon: {fileID: 21300000, guid: ba6d99084904cb242a89d901a1ad92b2, type: 3}
+  Ingredients:
+  - {fileID: 0}

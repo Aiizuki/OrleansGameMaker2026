@@ -67,6 +67,7 @@ namespace Core.Scripts
             }
             ticket.Init(plat);
             _spawnMatrix[spawnPoint] = commande;
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.SpawnStorage), plat);
 
             if (SelectAvailablePos() is null)
             {
