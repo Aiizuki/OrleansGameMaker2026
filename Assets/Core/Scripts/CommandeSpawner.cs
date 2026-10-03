@@ -57,6 +57,11 @@ namespace Core.Scripts
             var plat = _lstSpawnablePlats[Random.Range(0, _lstSpawnablePlats.Count)];
             Debug.Log("Je spawn le plat" + plat.Nom);
             var commande = Instantiate(_orderPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, transform);
+            if (!commande.TryGetComponent(out OrderTicket ticket))
+            {
+                ticket = commande.AddComponent<OrderTicket>();
+            }
+            ticket.Init(plat);
             _spawnMatrix[spawnPoint] = commande;
 
             if (SelectAvailablePos() is null)
@@ -78,15 +83,20 @@ namespace Core.Scripts
                 }
             }
 
-            var spawnPoint = _spawnMatrix.FirstOrDefault(x => x.Value == commande).Key;
-            if (spawnPoint is null)
+            var orderTicket = _spawnMatrix.FirstOrDefault(x => x.Value == commande);
+            if (orderTicket.Key is null)
             {
                 Debug.LogError("Commande introuvable dans la matrice : " + commande.name);
                 return;
             }
 
-            _spawnMatrix[spawnPoint] = null;
+            var plat = commande.GetComponent<OrderTicket>().Plat;
+            Debug.Log("J'ai pris la commande de " + plat.Nom);
+
+            _spawnMatrix[orderTicket.Key] = null;
             Destroy(commande); // TODO : faire un PlayerInventoryManager qui réagit à cet event pour récupérer la commande
+            
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.RefreshOrderUI), plat);
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.StartOrderSpawn));
         }
 
@@ -100,13 +110,13 @@ namespace Core.Scripts
         void InitEvents()
         {
             UnityEventManager.AddListener(nameof(EnumUnityEventName.SpawnCommande), SpawnCommande);
-            UnityEventManager.AddListener<GameObject>(nameof(EnumUnityEventName.TakeCommande), TakeCommande);
+            UnityEventManager.AddListener<GameObject>(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
         }
 
         void CancelEvents()
         {
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.SpawnCommande), SpawnCommande);
-            UnityEventManager.RemoveListener<GameObject>(nameof(EnumUnityEventName.TakeCommande), TakeCommande);
+            UnityEventManager.RemoveListener<GameObject>(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
         }
 
         #endregion UnityEvents

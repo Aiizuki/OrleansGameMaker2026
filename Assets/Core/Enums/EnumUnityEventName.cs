@@ -13,7 +13,10 @@ namespace Core.Enums
         SpawnCommande,
 
         [Description("The player took an order ticket from the board (param: the order GameObject)")]
-        TakeCommande,
+        TakeOrder,
+
+        [Description("An order ticket has been removed from the board (param: the ordered Plat)")]
+        RefreshOrderUI,
 
         #endregion InGameEvents
         
