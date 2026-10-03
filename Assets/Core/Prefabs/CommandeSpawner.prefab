@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4508719785988133295}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9162468419395921671}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -71,7 +71,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 695686086175937309}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -102,7 +102,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6038180516421893065}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1571338388085514479}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -166,9 +166,11 @@ GameObject:
   - component: {fileID: 3307728145519236641}
   - component: {fileID: 6548478317284984222}
   - component: {fileID: 6938147804264892698}
-  m_Layer: 0
+  - component: {fileID: 1212108176554969658}
+  - component: {fileID: 5535775275299433600}
+  m_Layer: 6
   m_Name: Board
-  m_TagString: Untagged
+  m_TagString: Board
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -253,6 +255,39 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &1212108176554969658
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821934071623409817}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.0000001, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5535775275299433600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821934071623409817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ff99972367ae347b3595cb597b0b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
 --- !u!1 &7118693131307902306
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,7 +355,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 48914964876116163}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -351,7 +386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 105834372881993262}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -382,7 +417,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1876720812564178575}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: SpawnPoint (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

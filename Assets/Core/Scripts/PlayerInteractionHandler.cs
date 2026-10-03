@@ -1,4 +1,6 @@
 using System;
+using Core.Enums;
+using Core.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +9,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     [Header("Inputs")]
     [SerializeField] private InputActionReference _InteractAction;
 
+    public GameObject Interactible = null; 
     private bool _isInteracting = false;
 
     private void Awake()
@@ -28,11 +31,14 @@ public class PlayerInteractionHandler : MonoBehaviour
     {
         _InteractAction.action.Enable();
     }
-    
+        
     private void Interact(InputAction.CallbackContext obj)
     {
-        
-        //Do your thing 
+        if (Interactible.gameObject.CompareTag("Board"))
+        {
+            Debug.Log("Interact board");
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.TakeOrder));
+        }
     }
 
     private void RevokeEvents()

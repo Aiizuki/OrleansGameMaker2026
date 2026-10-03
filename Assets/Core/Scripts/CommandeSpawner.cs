@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Core.Enums;
+using JetBrains.Annotations;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
@@ -70,17 +71,16 @@ namespace Core.Scripts
             }
         }
 
-        void TakeCommande(GameObject commande)
+        void TakeCommande()
         {
+            Debug.Log("POUET");
             // En debug (éditeur / development build), sans commande fournie : on prend la première de la matrice
-            if (commande is null && Debug.isDebugBuild)
+
+            GameObject commande = _spawnMatrix.Values.FirstOrDefault(x => x is not null);
+            if (commande is null)
             {
-                commande = _spawnMatrix.Values.FirstOrDefault(x => x is not null);
-                if (commande is null)
-                {
-                    Debug.LogWarning("[Debug] Aucune commande dans la matrice à retirer");
-                    return;
-                }
+                Debug.LogWarning("[Debug] Aucune commande dans la matrice à retirer");
+                return;
             }
 
             var orderTicket = _spawnMatrix.FirstOrDefault(x => x.Value == commande);
@@ -110,13 +110,13 @@ namespace Core.Scripts
         void InitEvents()
         {
             UnityEventManager.AddListener(nameof(EnumUnityEventName.SpawnCommande), SpawnCommande);
-            UnityEventManager.AddListener<GameObject>(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
+            UnityEventManager.AddListener(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
         }
 
         void CancelEvents()
         {
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.SpawnCommande), SpawnCommande);
-            UnityEventManager.RemoveListener<GameObject>(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
+            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
         }
 
         #endregion UnityEvents
