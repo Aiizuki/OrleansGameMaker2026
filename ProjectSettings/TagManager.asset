@@ -9,6 +9,8 @@ TagManager:
   - Bin
   - OrderPreparer
   - Bin
+  - OrderStation
+  - OrderDeposit
   layers:
   - Default
   - TransparentFX

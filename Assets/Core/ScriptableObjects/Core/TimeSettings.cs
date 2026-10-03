@@ -1,15 +1,13 @@
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [CreateAssetMenu(fileName = "TimeSettings", menuName = "Scriptable Objects/TimeSettings")]
 public class TimeSettings : ScriptableObject
 {
-    [Tooltip("Time (in seconds) before spawning an order")]
-    public float orderSpawnInterval;
+    [FormerlySerializedAs("orderSpawnInterval")] [Tooltip("Time (in seconds) before spawning an order")]
+    public float OrderSpawnInterval;
 
-    [Tooltip("Time (in seconds) for the angry slider to go from full to empty")]
-    public float angrySliderEmptyDuration = 120f;
-
-    [Tooltip("Value added to the angry slider when RaiseAngrySlider is triggered")]
-    public float angrySliderRaiseAmount;
+    [FormerlySerializedAs("angrySliderEmptyDuration")] [Tooltip("Time (in seconds) for the angry slider to go from full to empty")]
+    public float AngrySliderEmptyDuration = 120f;
 }

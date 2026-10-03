@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public enum IOAction
@@ -13,56 +14,99 @@ public class WaitingStation : MonoBehaviour
     public IOAction stationMode;
     public List<GameObject> objectsWaiting = new List<GameObject>();
     public List<GameObject> objectsPlaces = new List<GameObject>();
+
     public GameObject linkedStation;
+
     // Update is called once per frame
     void Update()
     {
         switch (stationMode)
         {
             case IOAction.Pull:
-                if (CheckToPull())
-                {
-                    objectsWaiting.Add(linkedStation.GetComponent<StationScript>().objectAtInput);
-                    linkedStation.GetComponent<StationScript>().objectAtInput = null;
-                    UpdateVisuals();
-                }
+                Deposit();
                 break;
             case IOAction.Push:
-                if (CheckToPush())
-                {
-                    linkedStation.GetComponent<StationScript>().objectAtInput = objectsWaiting[0];
-                    objectsWaiting[0].transform.parent = linkedStation.GetComponent<StationScript>().placeAtInput.transform;
-                    objectsWaiting[0].transform.localPosition = Vector3.zero;
-                    objectsWaiting.RemoveAt(0);
-                    if (objectsWaiting.Count > 1)
-                    {
-                        for (int i = 1; i < (objectsWaiting.Count - 1); i++)
-                        {
-                            objectsWaiting[i-1] = objectsWaiting[i];
-                            objectsWaiting.RemoveAt(i);
-                        }
-                    }
-                    UpdateVisuals();
-                }
+                PushToLinkedStation();
                 break;
         }
     }
 
-    private bool CheckToPull()
+    public void Deposit()
     {
-        if (linkedStation.GetComponent<StationScript>().objectAtInput != null && objectsWaiting.Count < objectsPlaces.Count)
+        if (!CheckToPull())
+            return;
+
+        objectsWaiting.Add(linkedStation.GetComponent<StationScript>().objectAtInput);
+        linkedStation.GetComponent<StationScript>().objectAtInput = null;
+        UpdateVisuals();
+    }
+
+    public bool HasObjectWaiting => objectsWaiting.Count > 0;
+
+    /// <summary>
+    /// Retire le premier objet de la file et le renvoie (null si la file est vide).
+    /// Ne le pose pas sur la station liée : en mode Pull, Deposit() le reprendrait à la frame suivante.
+    /// </summary>
+    [CanBeNull]
+    public GameObject Take()
+    {
+        if (!HasObjectWaiting)
+            return null;
+
+        GameObject takenObject = objectsWaiting[0];
+        // RemoveAt décale déjà le reste de la file
+        objectsWaiting.RemoveAt(0);
+
+        UpdateVisuals();
+        return takenObject;
+    }
+
+    /// <summary>
+    /// Mode Push : passe le premier objet de la file à l'entrée de la station liée, si elle est libre.
+    /// </summary>
+    private void PushToLinkedStation()
+    {
+        if (!CheckToPush())
+            return;
+
+        StationScript station = linkedStation.GetComponent<StationScript>();
+        GameObject pushedObject = Take();
+        station.objectAtInput = pushedObject;
+        pushedObject.transform.parent = station.placeAtInput.transform;
+        pushedObject.transform.localPosition = Vector3.zero;
+    }
+
+    public void AddObjectToWaiting(GameObject _objectToWaiting)
+    {
+        if (objectsWaiting.Count < objectsPlaces.Count)
+        {
+            objectsWaiting.Add(_objectToWaiting);
+            UpdateVisuals();
+        }
+        else
+        {
+            Destroy(_objectToWaiting);
+        }
+    }
+
+    public bool CheckToPull()
+    {
+        if (linkedStation.GetComponent<StationScript>().objectAtInput != null &&
+            objectsWaiting.Count < objectsPlaces.Count)
         {
             return true;
         }
+
         return false;
     }
 
-    private bool CheckToPush()
+    public bool CheckToPush()
     {
         if (!(linkedStation.GetComponent<StationScript>().objectAtInput != null) && objectsWaiting.Count > 0)
         {
             return true;
         }
+
         return false;
     }
 
@@ -77,24 +121,15 @@ public class WaitingStation : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Mlem");
-        if (other.gameObject.layer == LayerMask.NameToLayer("PreparedOrder") && objectsWaiting.Count < objectsPlaces.Count && stationMode ==  IOAction.Pull)
+        if (other.gameObject.layer == LayerMask.NameToLayer("PreparedOrder") &&
+            objectsWaiting.Count < objectsPlaces.Count && stationMode == IOAction.Pull)
         {
             objectsWaiting.Add(other.gameObject);
             UpdateVisuals();
         }
-    }
-
-    public void AddObjectToWaiting(GameObject _objectToWaiting)
-    {
-        if (objectsWaiting.Count < objectsPlaces.Count)
+        else if (other.gameObject.CompareTag("Player"))
         {
-            objectsWaiting.Add(_objectToWaiting);
-            UpdateVisuals();
-        }
-        else
-        {
-            Destroy(_objectToWaiting);
+            other.gameObject.GetComponent<PlayerInteractionHandler>().Interactible = gameObject;
         }
     }
 }

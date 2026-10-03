@@ -51,7 +51,7 @@ namespace Core.Scripts
             while (true)
             {
                 UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.SpawnCommande));
-                yield return new WaitForSeconds(_settings.orderSpawnInterval);
+                yield return new WaitForSeconds(_settings.OrderSpawnInterval);
             }
         }
 

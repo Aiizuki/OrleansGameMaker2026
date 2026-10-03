@@ -12,6 +12,11 @@ public class PreparedDish : MonoBehaviour
     [SerializeField] private Material _failureMaterial;
     public Plat Plat;
 
+    // État propre à cette instance : Plat est un ScriptableObject partagé par toutes les commandes,
+    // le modifier ferait échouer tous les plats suivants (et persisterait dans l'asset en éditeur)
+    public bool IsFailed { get; private set; }
+    public EnumDishStatus DishStatus { get; private set; } = EnumDishStatus.Raw;
+
     void Awake()
     {
         InitEvents();
@@ -34,12 +39,12 @@ public class PreparedDish : MonoBehaviour
 
     public void SetState(EnumDishStatus status)
     {
-        Plat.DishStatus = status;
+        DishStatus = status;
     }
 
     public void FailDish()
     {
-        Plat.IsFailed = true;
+        IsFailed = true;
         SetFailed();
     }
 

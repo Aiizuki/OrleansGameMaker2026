@@ -23,6 +23,9 @@ public class PlayerInteractionHandler : MonoBehaviour
     // Ingrédients ramassés pour la commande en cours (bons et mauvais)
     private readonly List<Plat> _inventory = new List<Plat>();
 
+    // Plat terminé porté par le joueur (masqué dans la scène, il garde son état réussi / raté)
+    private PreparedDish _finishedDish;
+
     private void Awake()
     {
         InitEvents();
@@ -78,7 +81,9 @@ public class PlayerInteractionHandler : MonoBehaviour
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.ReturnToStorage), ingredient);
         }
 
+        _finishedDish = null;
         _inventory.Clear();
+        
         ResetRemainingIngredients();
         UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.InventoryFlushed), _currentOrder);
     }
@@ -106,14 +111,15 @@ public class PlayerInteractionHandler : MonoBehaviour
         {
             if (_currentOrder != null)
             {
-                Debug.Log("Impossible de prendre un ticket : une commande est déjà en cours (" + _currentOrder.Nom + ")");
+                Debug.Log(
+                    "Impossible de prendre un ticket : une commande est déjà en cours (" + _currentOrder.Nom + ")");
                 return;
             }
 
             Debug.Log("Interact board");
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.TakeOrder));
         }
-        else if  (Interactible.gameObject.CompareTag("Product"))
+        else if (Interactible.gameObject.CompareTag("Product"))
         {
             if (_currentOrder == null)
             {
@@ -147,13 +153,37 @@ public class PlayerInteractionHandler : MonoBehaviour
             Debug.Log("Interact bin");
             FlushPlayerInventory();
         }
+        else if (Interactible.gameObject.CompareTag("OrderStation"))
+        {
+            if (_finishedDish != null)
+                Debug.Log("Tu ne peux pas ramasser un plat, tu en as déjà un !");
+            else if (Interactible.GetComponent<WaitingStation>().HasObjectWaiting)
+            {
+                GameObject dish = Interactible.GetComponent<WaitingStation>().Take();
+                _finishedDish = dish.GetComponent<PreparedDish>();
+                dish.SetActive(false);
+                Debug.Log($"Tu as ramassé {_finishedDish.Plat.Nom}");
+            }
+        }
+        else if (Interactible.gameObject.CompareTag("OrderDeposit"))
+        {
+            if (_finishedDish == null)
+                Debug.Log("Tu n'as pas de plat à déposer !");
+            else
+            {
+                Debug.Log($"Tu as déposé {_finishedDish.Plat.Nom} !");
+                Interactible.GetComponent<OrderFinisher>().Deposit(_finishedDish);
+                Destroy(_finishedDish.gameObject);
+                _finishedDish = null;
+            }
+        }
     }
 
     private void RevokeEvents()
-    {
-        _InteractAction.action.performed -= Interact;
-        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.OrderTaken), OnOrderTaken);
-        UnityEventManager.RemoveListener(nameof(EnumUnityEventName.OrderPrepared), OnOrderPrepared);
-        UnityEventManager.RemoveListener(nameof(EnumUnityEventName.FlushPlayerInventory), FlushPlayerInventory);
+        {
+            _InteractAction.action.performed -= Interact;
+            UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.OrderTaken), OnOrderTaken);
+            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.OrderPrepared), OnOrderPrepared);
+            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.FlushPlayerInventory), FlushPlayerInventory);
+        }
     }
-}

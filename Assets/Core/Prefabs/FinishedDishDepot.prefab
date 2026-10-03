@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7792316586724036885}
-  - component: {fileID: 3883108330425479003}
   - component: {fileID: 142647857067981547}
   - component: {fileID: 5321157451020015317}
   - component: {fileID: 1881984693170589713}
   - component: {fileID: 8653383746341409090}
+  - component: {fileID: 5103467495269725034}
   m_Layer: 0
-  m_Name: PreparedDishDepot
+  m_Name: FinishedDishDepot
   m_TagString: OrderPreparer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,21 +36,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3883108330425479003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8248017795661406356}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2fa4be398c0cdb746904da7093bbcc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::OrderPreparer
-  _preparedDishPrefab: {fileID: 1082592726577329921, guid: 689204cfed673c84597b453f578fd2fa, type: 3}
-  _spawnPoint: {fileID: 7792316586724036885}
-  _waitingStation: {fileID: 0}
 --- !u!33 &142647857067981547
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -127,8 +112,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 2, y: 1, z: 2}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1.1032528, y: 1, z: 1.132808}
+  m_Center: {x: -0.0053623915, y: 0, z: -0.07288635}
 --- !u!114 &8653383746341409090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +128,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Outliner
   _outlineMaterial: {fileID: 2100000, guid: 8fac3de563752c94ab3dc3f6f4588970, type: 2}
   _rendererToOutline: {fileID: 5321157451020015317}
+--- !u!114 &5103467495269725034
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8248017795661406356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 729766a8b991c534393f01e7fa872445, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::OrderFinisher

@@ -9,8 +9,6 @@ public class Plat : ScriptableObject
     public string Nom;
     public Sprite Icon;
     
-    [Header("Dish Settings (not used for single ingredients")]
+    [Header("Dish Settings (not used for single ingredients)")]
     public List<Plat> Ingredients;
-    public bool IsFailed = false;
-    public EnumDishStatus DishStatus = EnumDishStatus.Raw;
 }

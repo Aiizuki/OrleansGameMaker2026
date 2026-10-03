@@ -67,8 +67,8 @@ public class OrderPreparer : MonoBehaviour
         if (success)
             dish.SetSuccess();
         else
-            dish.SetFailed();
-        
+            dish.FailDish();
+
         dish.Plat = _currentOrder;
         _waitingStation.GetComponent<WaitingStation>().AddObjectToWaiting(dish.gameObject);
         

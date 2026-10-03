@@ -70,7 +70,14 @@ namespace Core.Enums
         [Description("Highlight the bin when the player has selected a wrong ingredient")]
         HighlightBin,
         
+        [Description("Fired when the player submit a good dish")]
+        GoodDishDeposit,
+        
+        [Description("Fired when the player submit a failed dish")]
+        ShitDishDeposit
+        
         #endregion BackgroundEvents
 
+        
     }
 }
