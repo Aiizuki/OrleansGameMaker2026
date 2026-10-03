@@ -72,8 +72,11 @@ public class OrderPreparer : MonoBehaviour
             dish.SetFailed();
         }
         
+        dish.Plat = _currentOrder;
+        
         _waitingStation.GetComponent<WaitingStation>().AddObjectToWaiting(dish.gameObject);
         
+        GetComponent<Outliner>().HideOutline();
         _currentOrder = null;
         _collectedCount = 0;
         _hasWrongIngredient = false;

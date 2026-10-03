@@ -71,7 +71,7 @@ public class WaitingStation : MonoBehaviour
         for (int i = 0; i < (objectsWaiting.Count); i++)
         {
             objectsWaiting[i].transform.parent = objectsPlaces[i].transform;
-            objectsPlaces[i].transform.localPosition = Vector3.zero;
+            objectsWaiting[i].transform.localPosition = Vector3.zero;
         }
     }
 

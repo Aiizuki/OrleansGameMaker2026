@@ -15,7 +15,7 @@ public class Outliner : MonoBehaviour
     [SerializeField] private Material _outlineMaterial;
     [SerializeField] private Renderer _rendererToOutline;
 
-    private static readonly Dictionary<Mesh, Mesh> _smoothedMeshes = new Dictionary<Mesh, Mesh>();
+    private static readonly Dictionary<(Mesh, Vector3), Mesh> _smoothedMeshes = new Dictionary<(Mesh, Vector3), Mesh>();
 
     private GameObject _outlineObject;
 
@@ -57,7 +57,7 @@ public class Outliner : MonoBehaviour
         _outlineObject = new GameObject("Outline");
         _outlineObject.transform.SetParent(_rendererToOutline.transform, false);
 
-        Mesh mesh = GetSmoothedMesh(sourceFilter.sharedMesh);
+        Mesh mesh = GetSmoothedMesh(sourceFilter.sharedMesh, _rendererToOutline.transform.lossyScale);
         _outlineObject.AddComponent<MeshFilter>().sharedMesh = mesh;
 
         MeshRenderer outlineRenderer = _outlineObject.AddComponent<MeshRenderer>();
@@ -74,13 +74,16 @@ public class Outliner : MonoBehaviour
     /// Copie du mesh avec des normales lissées : sur un mesh à arêtes vives, les sommets d'un coin
     /// ont chacun la normale de leur face, le mesh gonflé s'ouvre aux coins et le contour est cassé.
     /// En moyennant les normales des sommets à la même position, le gonflement reste continu.
-    /// Mise en cache : un seul mesh lissé par mesh source.
+    /// La moyenne se fait avec le scale appliqué : sur un objet aplati (scale non uniforme),
+    /// une moyenne en espace objet donnerait des normales presque verticales une fois transformées.
+    /// Mise en cache : un seul mesh lissé par couple mesh source / scale.
     /// </summary>
-    private static Mesh GetSmoothedMesh(Mesh source)
+    private static Mesh GetSmoothedMesh(Mesh source, Vector3 scale)
     {
         // Le cache statique survit entre deux Play si le domain reload est désactivé,
         // mais les meshes créés pendant le Play précédent ont été détruits : on les recrée
-        if (_smoothedMeshes.TryGetValue(source, out Mesh smoothed) && smoothed != null)
+        var key = (source, scale);
+        if (_smoothedMeshes.TryGetValue(key, out Mesh smoothed) && smoothed != null)
             return smoothed;
 
         if (!source.isReadable)
@@ -98,15 +101,21 @@ public class Outliner : MonoBehaviour
         var normalsByPosition = new Dictionary<Vector3, Vector3>();
         for (int i = 0; i < vertices.Length; i++)
         {
+            // Normale telle qu'elle sera après le scale (une normale se transforme par l'inverse du scale)
+            Vector3 scaledNormal = new Vector3(normals[i].x / scale.x, normals[i].y / scale.y, normals[i].z / scale.z).normalized;
             normalsByPosition.TryGetValue(vertices[i], out Vector3 sum);
-            normalsByPosition[vertices[i]] = sum + normals[i];
+            normalsByPosition[vertices[i]] = sum + scaledNormal;
         }
 
         for (int i = 0; i < vertices.Length; i++)
-            normals[i] = normalsByPosition[vertices[i]].normalized;
+        {
+            // Retour en espace objet : le shader réappliquera l'inverse du scale
+            Vector3 average = normalsByPosition[vertices[i]].normalized;
+            normals[i] = Vector3.Scale(average, scale).normalized;
+        }
 
         smoothed.normals = normals;
-        _smoothedMeshes[source] = smoothed;
+        _smoothedMeshes[key] = smoothed;
         return smoothed;
     }
 

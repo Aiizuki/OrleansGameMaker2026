@@ -111,6 +111,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549231afcfe5e8d458e2882135c8f740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  stationType: 0
   StationInput: {fileID: 6902600680170733346}
   StationInventory: {fileID: 2059854449574879905}
   StationOutput: {fileID: 6999648758978806265}
@@ -291,6 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549231afcfe5e8d458e2882135c8f740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StationScript
+  stationType: 2
   StationInput: {fileID: 5897125690770063128}
   StationInventory: {fileID: 4741169931372513372}
   StationOutput: {fileID: 6030248610872909691}
@@ -378,6 +380,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549231afcfe5e8d458e2882135c8f740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StationScript
+  stationType: 0
   StationInput: {fileID: 4190622648897433581}
   StationInventory: {fileID: 4801619983380880847}
   StationOutput: {fileID: 4158936859456525508}
@@ -806,6 +809,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 549231afcfe5e8d458e2882135c8f740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StationScript
+  stationType: 1
   StationInput: {fileID: 8325400414654052109}
   StationInventory: {fileID: 8153935658780342663}
   StationOutput: {fileID: 6530394836686158727}

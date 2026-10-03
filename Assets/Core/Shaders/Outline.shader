@@ -8,6 +8,8 @@ Shader "Custom/Outline"
     {
         _OutlineColor ("Outline Color", Color) = (0, 1, 0, 1)
         _OutlineWidth ("Outline Width (world units)", Range(0, 0.2)) = 0.03
+        // LessEqual : contour caché par le décor. Always : contour toujours visible (objet plat posé sur une surface)
+        [Enum(UnityEngine.Rendering.CompareFunction)] _ZTest ("ZTest", Float) = 4
     }
 
     SubShader
@@ -43,7 +45,7 @@ Shader "Custom/Outline"
 
             Cull Back
             ZWrite Off
-            ZTest LEqual
+            ZTest [_ZTest]
             ColorMask 0
 
             Stencil
@@ -77,7 +79,9 @@ Shader "Custom/Outline"
             Tags { "LightMode" = "UniversalForward" }
 
             Cull Front
-            ZWrite On
+            ZTest [_ZTest]
+            // Pas d'écriture de profondeur : le contour ne doit pas masquer ce qui est dessiné après
+            ZWrite Off
 
             Stencil
             {
