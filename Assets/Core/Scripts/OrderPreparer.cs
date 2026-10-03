@@ -1,3 +1,4 @@
+using System;
 using Core.Enums;
 using Core.Scripts;
 using UnityEngine;
@@ -14,6 +15,7 @@ public class OrderPreparer : MonoBehaviour
     private Plat _currentOrder;
     private int _collectedCount;
     private bool _hasWrongIngredient;
+    private bool _orderReady = false;
 
     void Awake()
     {
@@ -35,6 +37,11 @@ public class OrderPreparer : MonoBehaviour
     private void OnIngredientCollected(Plat ingredient)
     {
         _collectedCount++;
+        if (!_hasWrongIngredient && _collectedCount == _currentOrder.Ingredients.Count)
+        {
+            GetComponent<Outliner>().ShowOutline();
+        }
+        
     }
 
     private void OnWrongIngredient(Plat ingredient)
@@ -63,6 +70,22 @@ public class OrderPreparer : MonoBehaviour
         _currentOrder = null;
         _collectedCount = 0;
         _hasWrongIngredient = false;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerInteractionHandler>().Interactible = this.gameObject;
+        }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<PlayerInteractionHandler>().Interactible = null;
+        }
     }
 
     #region UnityEvents
