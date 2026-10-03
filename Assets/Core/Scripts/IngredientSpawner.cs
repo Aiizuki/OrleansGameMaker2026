@@ -14,6 +14,7 @@ public class IngredientSpawner : MonoBehaviour
     void Awake()
     {
         UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.SpawnStorage), SpawnStorage);
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.ReturnToStorage), ReturnToStorage);
 
         _spawnPoints = new Dictionary<Transform, ProductStockHandler>();
         foreach (var spawnPoint in _lstSpawnPoints)
@@ -26,24 +27,36 @@ public class IngredientSpawner : MonoBehaviour
     {
         foreach (var ingredient in plat.Ingredients)
         {
-            // Le produit est déjà stocké quelque part : on ajoute 1 au carton existant
-            var existingStock = GetStock(ingredient);
-            if (existingStock != null)
-            {
-                existingStock.AddProduct();
-                continue;
-            }
-
-            var freeSpawnPoint = GetFreeSpawnPoint();
-            if (freeSpawnPoint == null)
-            {
-                Debug.LogError("Plus aucun point de spawn disponible !");
+            if (!AddToStorage(ingredient))
                 return;
-            }
-
-            _spawnPoints[freeSpawnPoint] = _productCartonPrefab.GetComponent<ProductStockHandler>()
-                .Setup(ingredient, freeSpawnPoint, this);
         }
+    }
+
+    private void ReturnToStorage(Plat ingredient)
+    {
+        AddToStorage(ingredient);
+    }
+
+    // Ajoute 1 produit au stock : +1 sur le carton existant, sinon nouveau carton sur un emplacement libre
+    private bool AddToStorage(Plat ingredient)
+    {
+        var existingStock = GetStock(ingredient);
+        if (existingStock != null)
+        {
+            existingStock.AddProduct();
+            return true;
+        }
+
+        var freeSpawnPoint = GetFreeSpawnPoint();
+        if (freeSpawnPoint == null)
+        {
+            Debug.LogError("Plus aucun point de spawn disponible !");
+            return false;
+        }
+
+        _spawnPoints[freeSpawnPoint] = _productCartonPrefab.GetComponent<ProductStockHandler>()
+            .Setup(ingredient, freeSpawnPoint, this);
+        return true;
     }
 
     public void ReleaseSpawnPoint(Transform spawnPoint)

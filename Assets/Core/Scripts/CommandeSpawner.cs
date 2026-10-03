@@ -55,6 +55,7 @@ namespace Core.Scripts
             if (spawnPoint is null)
             {
                 Debug.LogError("Tous les emplacements sont pris, revoir le timing de spawn");
+                UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.StopOrderSpawn));
                 return;
             }
 

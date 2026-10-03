@@ -1,12 +1,15 @@
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class ProductStockHandler : MonoBehaviour
 {
     [SerializeField] private Image _image;
-    [SerializeField] private Material _outlineMaterial;
-    [SerializeField] private MeshRenderer _rendererToHighlight;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent _onPlayerEnter;
+    [SerializeField] private UnityEvent _onPlayerExit;
+
     public Plat Plat;
     public int Quantity { get; private set; }
 
@@ -47,7 +50,7 @@ public class ProductStockHandler : MonoBehaviour
             return;
 
         other.gameObject.GetComponent<PlayerInteractionHandler>().Interactible = this.gameObject;
-        SetHighlight(true);
+        _onPlayerEnter.Invoke();
     }
 
     void OnTriggerExit(Collider other)
@@ -56,23 +59,6 @@ public class ProductStockHandler : MonoBehaviour
             return;
 
         other.gameObject.GetComponent<PlayerInteractionHandler>().Interactible = null;
-        SetHighlight(false);
-    }
-
-    private void SetHighlight(bool highlighted)
-    {
-        // sharedMaterials pour ne pas dupliquer les matériaux de l'objet
-        var materials = new List<Material>(_rendererToHighlight.sharedMaterials);
-        bool hasOutline = materials.Contains(_outlineMaterial);
-
-        if (highlighted && !hasOutline)
-            materials.Add(_outlineMaterial);
-        else if (!highlighted && hasOutline)
-            materials.Remove(_outlineMaterial);
-        else
-            return;
-
-        // La liste est une copie : il faut la réassigner au renderer pour que ça s'affiche
-        _rendererToHighlight.sharedMaterials = materials.ToArray();
+        _onPlayerExit.Invoke();
     }
 }

@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4727778acd0fa1b45ac631589c6d318f, type: 3}
   m_Name: Moutarde
   m_EditorClassIdentifier: Assembly-CSharp::Plat
-  Nom: Andouillette de Jargeau
+  Nom: Moutarde
   Icon: {fileID: 21300000, guid: 5297288ef7b5cab40a494d02f003673d, type: 3}
   Ingredients: []

@@ -9,8 +9,8 @@ public class CommandeUIDisplayer : MonoBehaviour
     [SerializeField] private TextMeshProUGUI platName;
     [SerializeField] private GameObject ingredientPrefab;
     [SerializeField] private GameObject ingredientPanel;
-
-    // Le GameObject doit rester actif pour écouter les events : on masque l'UI via le CanvasGroup
+    [SerializeField] private Color wrongIngredientColor = Color.red;
+    
     private CanvasGroup _canvasGroup;
 
     // Lignes du bon pas encore rayées (une entrée par exemplaire d'ingrédient)
@@ -85,6 +85,12 @@ public class CommandeUIDisplayer : MonoBehaviour
 
     private void OnWrongIngredient(Plat ingredient)
     {
+        // Même prefab que les ingrédients du bon, mais en rouge et hors de _pendingIngredients
+        var ingredientUI = Instantiate(ingredientPrefab, ingredientPanel.transform);
+        var ingredientText = ingredientUI.GetComponent<TextMeshProUGUI>();
+        ingredientText.text = ingredient.Nom;
+        ingredientText.color = wrongIngredientColor;
+
         ShowError(ingredient.Nom + " n'est pas dans la commande");
     }
 
@@ -102,6 +108,8 @@ public class CommandeUIDisplayer : MonoBehaviour
         UnityEventManager.AddListener(nameof(EnumUnityEventName.OrderPrepared), HideOrder);
         UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.IngredientCollected), StrikeIngredient);
         UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.WrongIngredient), OnWrongIngredient);
+        // Inventaire vidé : on réaffiche le bon sans aucune ligne rayée ni ingrédient en rouge
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.InventoryFlushed), RefreshOrderDisplayed);
     }
 
     void CancelEvents()
@@ -110,6 +118,7 @@ public class CommandeUIDisplayer : MonoBehaviour
         UnityEventManager.RemoveListener(nameof(EnumUnityEventName.OrderPrepared), HideOrder);
         UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.IngredientCollected), StrikeIngredient);
         UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.WrongIngredient), OnWrongIngredient);
+        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.InventoryFlushed), RefreshOrderDisplayed);
     }
 
     #endregion UnityEvents
