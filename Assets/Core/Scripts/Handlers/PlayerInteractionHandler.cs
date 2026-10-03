@@ -11,6 +11,9 @@ public class PlayerInteractionHandler : MonoBehaviour
     public GameObject Interactible = null;
     private bool _isInteracting = false;
 
+    // Commande prise au tableau (null tant que le joueur n'a pas de bon de commande)
+    private Plat _currentOrder;
+
     private void Awake()
     {
         InitEvents();
@@ -24,6 +27,18 @@ public class PlayerInteractionHandler : MonoBehaviour
     private void InitEvents()
     {
         _InteractAction.action.performed += Interact;
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.OrderTaken), OnOrderTaken);
+        UnityEventManager.AddListener(nameof(EnumUnityEventName.OrderPrepared), OnOrderPrepared);
+    }
+
+    private void OnOrderTaken(Plat plat)
+    {
+        _currentOrder = plat;
+    }
+
+    private void OnOrderPrepared()
+    {
+        _currentOrder = null;
     }
 
     private void OnEnable()
@@ -33,7 +48,7 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     private void Interact(InputAction.CallbackContext obj)
     {
-        if (Interactible is null)
+        if (Interactible == null)
         {
             Debug.Log("Nothing to interact with");
             return;
@@ -41,11 +56,23 @@ public class PlayerInteractionHandler : MonoBehaviour
 
         if (Interactible.gameObject.CompareTag("Board"))
         {
+            if (_currentOrder != null)
+            {
+                Debug.Log("Impossible de prendre un ticket : une commande est déjà en cours (" + _currentOrder.Nom + ")");
+                return;
+            }
+
             Debug.Log("Interact board");
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.TakeOrder));
         }
         else if  (Interactible.gameObject.CompareTag("Product"))
         {
+            if (_currentOrder == null)
+            {
+                Debug.Log("Impossible de prendre un produit sans bon de commande");
+                return;
+            }
+
             var stock = Interactible.gameObject.GetComponent<ProductStockHandler>();
             Plat selectedProduct = stock.TakeProduct();
             Debug.Log("Récupération du produit" + selectedProduct.Nom);
@@ -61,5 +88,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     private void RevokeEvents()
     {
         _InteractAction.action.performed -= Interact;
+        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.OrderTaken), OnOrderTaken);
+        UnityEventManager.RemoveListener(nameof(EnumUnityEventName.OrderPrepared), OnOrderPrepared);
     }
 }

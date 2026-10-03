@@ -99,7 +99,7 @@ namespace Core.Scripts
             _spawnMatrix[orderTicket.Key] = null;
             Destroy(commande); // TODO : faire un PlayerInventoryManager qui réagit à cet event pour récupérer la commande
             
-            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.RefreshOrderUI), plat);
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.OrderTaken), plat);
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.StartOrderSpawn));
         }
 

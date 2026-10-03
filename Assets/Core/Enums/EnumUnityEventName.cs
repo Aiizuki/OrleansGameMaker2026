@@ -15,8 +15,11 @@ namespace Core.Enums
         [Description("The player took an order ticket from the board (param: the order GameObject)")]
         TakeOrder,
 
-        [Description("An order ticket has been removed from the board (param: the ordered Plat)")]
-        RefreshOrderUI,
+        [Description("The player now holds an order ticket (param: the ordered Plat)")]
+        OrderTaken,
+
+        [Description("The player prepared the current order: frees the order ticket so a new one can be taken")]
+        OrderPrepared,
 
         #endregion InGameEvents
         

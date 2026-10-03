@@ -53,16 +53,29 @@ public class CommandeUIDisplayer : MonoBehaviour
         SetVisible(true);
     }
 
+    private void HideOrder()
+    {
+        SetVisible(false);
+        platName.text = string.Empty;
+
+        foreach (Transform child in ingredientPanel.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
     #region UnityEvents
 
     void InitEvents()
     {
-        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.RefreshOrderUI), RefreshOrderDisplayed);
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.OrderTaken), RefreshOrderDisplayed);
+        UnityEventManager.AddListener(nameof(EnumUnityEventName.OrderPrepared), HideOrder);
     }
 
     void CancelEvents()
     {
-        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.RefreshOrderUI), RefreshOrderDisplayed);
+        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.OrderTaken), RefreshOrderDisplayed);
+        UnityEventManager.RemoveListener(nameof(EnumUnityEventName.OrderPrepared), HideOrder);
     }
 
     #endregion UnityEvents
