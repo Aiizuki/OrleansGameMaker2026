@@ -15,14 +15,19 @@ namespace Core.Scripts
             InitEvents();
         }
 
-        void Start()
-        {
-            StartOrderSpawn();
-        }
-
         private void OnDestroy()
         {
             CancelEvents();
+        }
+        
+        private void OnGameStart()
+        {
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.StartTime));
+        }
+
+        private void StopTime()
+        {
+            StopOrderSpawn();
         }
 
         private void StartOrderSpawn()
@@ -54,16 +59,20 @@ namespace Core.Scripts
 
         void InitEvents()
         {
-            UnityEventManager.AddListener(nameof(EnumUnityEventName.GameStart), StartOrderSpawn);
+            UnityEventManager.AddListener(nameof(EnumUnityEventName.GameStart), OnGameStart);
+            UnityEventManager.AddListener(nameof(EnumUnityEventName.StartTime), StartOrderSpawn);
             UnityEventManager.AddListener(nameof(EnumUnityEventName.StartOrderSpawn), StartOrderSpawn);
             UnityEventManager.AddListener(nameof(EnumUnityEventName.StopOrderSpawn), StopOrderSpawn);
+            UnityEventManager.AddListener(nameof(EnumUnityEventName.GameOver), StopTime);
         }
 
         void CancelEvents()
         {
-            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.GameStart), StartOrderSpawn);
+            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.GameStart), OnGameStart);
+            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StartTime), StartOrderSpawn);
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StartOrderSpawn), StartOrderSpawn);
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StopOrderSpawn), StopOrderSpawn);
+            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.GameOver), StopTime);
         }
 
         #endregion UnityEvents

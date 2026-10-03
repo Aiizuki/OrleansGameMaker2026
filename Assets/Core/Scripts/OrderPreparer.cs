@@ -33,6 +33,7 @@ public class OrderPreparer : MonoBehaviour
         _currentOrder = plat;
         _collectedCount = 0;
         _hasWrongIngredient = false;
+        GetComponent<Outliner>().HideOutline();
     }
 
     private void OnIngredientCollected(Plat ingredient)
@@ -64,16 +65,11 @@ public class OrderPreparer : MonoBehaviour
         // Appel direct sur l'instance pour ne pas recolorer les autres plats déjà posés
         bool success = !_hasWrongIngredient && _collectedCount == _currentOrder.Ingredients.Count;
         if (success)
-        {
             dish.SetSuccess();
-        }
         else
-        {
             dish.SetFailed();
-        }
         
         dish.Plat = _currentOrder;
-        
         _waitingStation.GetComponent<WaitingStation>().AddObjectToWaiting(dish.gameObject);
         
         GetComponent<Outliner>().HideOutline();
