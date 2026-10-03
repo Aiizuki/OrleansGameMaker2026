@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Core.Enums;
 using Core.Scripts;
 using UnityEngine;
@@ -13,6 +14,9 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     // Commande prise au tableau (null tant que le joueur n'a pas de bon de commande)
     private Plat _currentOrder;
+
+    // Ingrédients de la commande pas encore ramassés (un doublon = une entrée par exemplaire)
+    private readonly List<Plat> _remainingIngredients = new List<Plat>();
 
     private void Awake()
     {
@@ -34,11 +38,14 @@ public class PlayerInteractionHandler : MonoBehaviour
     private void OnOrderTaken(Plat plat)
     {
         _currentOrder = plat;
+        _remainingIngredients.Clear();
+        _remainingIngredients.AddRange(plat.Ingredients);
     }
 
     private void OnOrderPrepared()
     {
         _currentOrder = null;
+        _remainingIngredients.Clear();
     }
 
     private void OnEnable()
@@ -76,6 +83,12 @@ public class PlayerInteractionHandler : MonoBehaviour
             var stock = Interactible.gameObject.GetComponent<ProductStockHandler>();
             Plat selectedProduct = stock.TakeProduct();
             Debug.Log("Récupération du produit" + selectedProduct.Nom);
+
+            // Remove n'enlève qu'une occurrence : gère les ingrédients demandés plusieurs fois
+            if (_remainingIngredients.Remove(selectedProduct))
+                UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.IngredientCollected), selectedProduct);
+            else
+                UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.WrongIngredient), selectedProduct);
 
             // Carton vide détruit : OnTriggerExit ne sera pas appelé, on oublie l'interactible ici
             if (stock.Quantity <= 0)

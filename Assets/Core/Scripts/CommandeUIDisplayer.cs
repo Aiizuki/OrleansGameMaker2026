@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Core.Enums;
 using Core.Scripts;
 using TMPro;
@@ -11,6 +12,9 @@ public class CommandeUIDisplayer : MonoBehaviour
 
     // Le GameObject doit rester actif pour écouter les events : on masque l'UI via le CanvasGroup
     private CanvasGroup _canvasGroup;
+
+    // Lignes du bon pas encore rayées (une entrée par exemplaire d'ingrédient)
+    private readonly List<(Plat ingredient, TextMeshProUGUI text)> _pendingIngredients = new List<(Plat, TextMeshProUGUI)>();
 
     void Awake()
     {
@@ -39,15 +43,14 @@ public class CommandeUIDisplayer : MonoBehaviour
     {
         platName.text = plat.Nom;
         
-        foreach (Transform child in ingredientPanel.transform)
-        {
-            Destroy(child.gameObject);
-        }
+        ClearIngredients();
 
         foreach (var ingredient in plat.Ingredients)
         {
             var ingredientUI = Instantiate(ingredientPrefab, ingredientPanel.transform);
-            ingredientUI.GetComponent<TextMeshProUGUI>().text = ingredient.Nom;
+            var ingredientText = ingredientUI.GetComponent<TextMeshProUGUI>();
+            ingredientText.text = ingredient.Nom;
+            _pendingIngredients.Add((ingredient, ingredientText));
         }
 
         SetVisible(true);
@@ -57,11 +60,38 @@ public class CommandeUIDisplayer : MonoBehaviour
     {
         SetVisible(false);
         platName.text = string.Empty;
+        ClearIngredients();
+    }
 
+    private void ClearIngredients()
+    {
+        _pendingIngredients.Clear();
         foreach (Transform child in ingredientPanel.transform)
         {
             Destroy(child.gameObject);
         }
+    }
+
+    private void StrikeIngredient(Plat ingredient)
+    {
+        int index = _pendingIngredients.FindIndex(x => x.ingredient == ingredient);
+        if (index < 0)
+            return;
+
+        // Retiré de la liste pour qu'un doublon raye la ligne suivante
+        _pendingIngredients[index].text.text = "<s>" + ingredient.Nom + "</s>";
+        _pendingIngredients.RemoveAt(index);
+    }
+
+    private void OnWrongIngredient(Plat ingredient)
+    {
+        ShowError(ingredient.Nom + " n'est pas dans la commande");
+    }
+
+    // TODO : afficher le message à l'écran plutôt que dans la console
+    public void ShowError(string message)
+    {
+        Debug.LogWarning(message);
     }
 
     #region UnityEvents
@@ -70,12 +100,16 @@ public class CommandeUIDisplayer : MonoBehaviour
     {
         UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.OrderTaken), RefreshOrderDisplayed);
         UnityEventManager.AddListener(nameof(EnumUnityEventName.OrderPrepared), HideOrder);
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.IngredientCollected), StrikeIngredient);
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.WrongIngredient), OnWrongIngredient);
     }
 
     void CancelEvents()
     {
         UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.OrderTaken), RefreshOrderDisplayed);
         UnityEventManager.RemoveListener(nameof(EnumUnityEventName.OrderPrepared), HideOrder);
+        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.IngredientCollected), StrikeIngredient);
+        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.WrongIngredient), OnWrongIngredient);
     }
 
     #endregion UnityEvents

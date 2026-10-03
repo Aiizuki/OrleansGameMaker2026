@@ -21,6 +21,18 @@ namespace Core.Enums
         [Description("The player prepared the current order: frees the order ticket so a new one can be taken")]
         OrderPrepared,
 
+        [Description("The player picked an ingredient that is part of the current order (param: the ingredient Plat)")]
+        IngredientCollected,
+
+        [Description("The player picked an ingredient that is not (or no longer) expected by the current order (param: the ingredient Plat)")]
+        WrongIngredient,
+
+        [Description("Sets the prepared dish(es) to success (green material)")]
+        DishSucceeded,
+
+        [Description("Sets the prepared dish(es) to failure (red material)")]
+        DishFailed,
+
         #endregion InGameEvents
         
         #region BackgroundEvents
