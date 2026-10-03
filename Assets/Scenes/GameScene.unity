@@ -1592,10 +1592,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3484143649806995523, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
-      propertyPath: chanceToFail
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 9193850810371614546, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_Name
       value: IAGroup
