@@ -189,6 +189,7 @@ GameObject:
   - component: {fileID: 5760211362228526807}
   - component: {fileID: 1986808812780446419}
   - component: {fileID: 1354922717017586601}
+  - component: {fileID: -6485831825414868820}
   m_Layer: 0
   m_Name: ProductStock
   m_TagString: Product
@@ -226,8 +227,36 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ProductStockSpawner
   _image: {fileID: 4349681902272143384}
-  _outlineMaterial: {fileID: 2100000, guid: 3c6b404aeaa4c8a45bc3d0911e111055, type: 2}
-  _rendererToHighlight: {fileID: 1962224797929458995}
+  _onPlayerEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6485831825414868820}
+        m_TargetAssemblyTypeName: Outliner, Assembly-CSharp
+        m_MethodName: ShowOutline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _onPlayerExit:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -6485831825414868820}
+        m_TargetAssemblyTypeName: Outliner, Assembly-CSharp
+        m_MethodName: HideOutline
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   Plat: {fileID: 0}
 --- !u!65 &1354922717017586601
 BoxCollider:
@@ -250,6 +279,20 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.4921587, y: 1.0892973, z: 1.2336836}
   m_Center: {x: -0.004262328, y: 0.52310324, z: 0.0006753206}
+--- !u!114 &-6485831825414868820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8462107587394804751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fb3df78502d27044a0ba2f468a92d5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Outliner
+  _outlineMaterial: {fileID: 2100000, guid: 3c6b404aeaa4c8a45bc3d0911e111055, type: 2}
+  _rendererToOutline: {fileID: 1962224797929458995}
 --- !u!1001 &935249741874123191
 PrefabInstance:
   m_ObjectHideFlags: 0

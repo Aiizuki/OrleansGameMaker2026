@@ -40,6 +40,7 @@ public class OrderPreparer : MonoBehaviour
     private void OnWrongIngredient(Plat ingredient)
     {
         _hasWrongIngredient = true;
+        UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.HighlightBin));
     }
 
     private void PrepareOrder()
@@ -72,6 +73,7 @@ public class OrderPreparer : MonoBehaviour
         UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.IngredientCollected), OnIngredientCollected);
         UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.WrongIngredient), OnWrongIngredient);
         UnityEventManager.AddListener(nameof(EnumUnityEventName.OrderPrepared), PrepareOrder);
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.InventoryFlushed), OnOrderTaken);
     }
 
     void CancelEvents()
@@ -80,6 +82,7 @@ public class OrderPreparer : MonoBehaviour
         UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.IngredientCollected), OnIngredientCollected);
         UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.WrongIngredient), OnWrongIngredient);
         UnityEventManager.RemoveListener(nameof(EnumUnityEventName.OrderPrepared), PrepareOrder);
+        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.InventoryFlushed), OnOrderTaken);
     }
 
     #endregion UnityEvents

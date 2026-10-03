@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4727778acd0fa1b45ac631589c6d318f, type: 3}
   m_Name: Asperges
   m_EditorClassIdentifier: Assembly-CSharp::Plat
-  Nom: Andouillette de Jargeau
+  Nom: Asperges
   Icon: {fileID: 21300000, guid: f8f987600fe70d34b85d492781a70dbd, type: 3}
   Ingredients: []

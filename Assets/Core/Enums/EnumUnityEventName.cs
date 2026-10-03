@@ -33,6 +33,12 @@ namespace Core.Enums
         [Description("Sets the prepared dish(es) to failure (red material)")]
         DishFailed,
 
+        [Description("Puts every ingredient picked by the player back into the storage")]
+        FlushPlayerInventory,
+
+        [Description("The player's inventory has been put back into the storage (param: the current order Plat)")]
+        InventoryFlushed,
+
         #endregion InGameEvents
         
         #region BackgroundEvents
@@ -48,7 +54,14 @@ namespace Core.Enums
         
         [Description("Spawns a storage box in the storage room")]
         SpawnStorage,
+
+        [Description("Puts one ingredient back into the storage (param: the ingredient Plat)")]
+        ReturnToStorage,
+        
+        [Description("Highlight the bin when the player has selected a wrong ingredient")]
+        HighlightBin,
         
         #endregion BackgroundEvents
+
     }
 }

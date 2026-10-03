@@ -9,6 +9,8 @@ public class PlayerInteractionHandler : MonoBehaviour
 {
     [Header("Inputs")] [SerializeField] private InputActionReference _InteractAction;
 
+    [Header("Order")] [SerializeField] private int _maxPickedIngredients = 5;
+
     public GameObject Interactible = null;
     private bool _isInteracting = false;
 
@@ -17,6 +19,9 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     // Ingrédients de la commande pas encore ramassés (un doublon = une entrée par exemplaire)
     private readonly List<Plat> _remainingIngredients = new List<Plat>();
+
+    // Ingrédients ramassés pour la commande en cours (bons et mauvais)
+    private readonly List<Plat> _inventory = new List<Plat>();
 
     private void Awake()
     {
@@ -33,19 +38,49 @@ public class PlayerInteractionHandler : MonoBehaviour
         _InteractAction.action.performed += Interact;
         UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.OrderTaken), OnOrderTaken);
         UnityEventManager.AddListener(nameof(EnumUnityEventName.OrderPrepared), OnOrderPrepared);
+        UnityEventManager.AddListener(nameof(EnumUnityEventName.FlushPlayerInventory), FlushPlayerInventory);
     }
 
     private void OnOrderTaken(Plat plat)
     {
         _currentOrder = plat;
-        _remainingIngredients.Clear();
-        _remainingIngredients.AddRange(plat.Ingredients);
+        ResetRemainingIngredients();
+        _inventory.Clear();
     }
 
     private void OnOrderPrepared()
     {
         _currentOrder = null;
         _remainingIngredients.Clear();
+        _inventory.Clear();
+    }
+
+    private void ResetRemainingIngredients()
+    {
+        _remainingIngredients.Clear();
+        _remainingIngredients.AddRange(_currentOrder.Ingredients);
+    }
+
+    /// <summary>
+    /// Replace tous les ingrédients ramassés dans le stockage. La commande reste en cours,
+    /// mais repart de zéro (UI du bon et suivi de préparation remis à l'état initial).
+    /// </summary>
+    public void FlushPlayerInventory()
+    {
+        if (_currentOrder == null || _inventory.Count == 0)
+        {
+            Debug.Log("Inventaire vide : rien à replacer dans le stockage");
+            return;
+        }
+
+        foreach (var ingredient in _inventory)
+        {
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.ReturnToStorage), ingredient);
+        }
+
+        _inventory.Clear();
+        ResetRemainingIngredients();
+        UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.InventoryFlushed), _currentOrder);
     }
 
     private void OnEnable()
@@ -80,8 +115,15 @@ public class PlayerInteractionHandler : MonoBehaviour
                 return;
             }
 
+            if (_inventory.Count >= _maxPickedIngredients)
+            {
+                Debug.Log("Impossible de prendre plus de " + _maxPickedIngredients + " ingrédients");
+                return;
+            }
+
             var stock = Interactible.gameObject.GetComponent<ProductStockHandler>();
             Plat selectedProduct = stock.TakeProduct();
+            _inventory.Add(selectedProduct);
             Debug.Log("Récupération du produit" + selectedProduct.Nom);
 
             // Remove n'enlève qu'une occurrence : gère les ingrédients demandés plusieurs fois
@@ -93,8 +135,11 @@ public class PlayerInteractionHandler : MonoBehaviour
             // Carton vide détruit : OnTriggerExit ne sera pas appelé, on oublie l'interactible ici
             if (stock.Quantity <= 0)
                 Interactible = null;
-            
-            // TODO : ajouter le produit dans l'inventaire du joueur
+        }
+        else if (Interactible.gameObject.CompareTag("Bin"))
+        {
+            Debug.Log("Interact bin");
+            FlushPlayerInventory();
         }
     }
 
@@ -103,5 +148,6 @@ public class PlayerInteractionHandler : MonoBehaviour
         _InteractAction.action.performed -= Interact;
         UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.OrderTaken), OnOrderTaken);
         UnityEventManager.RemoveListener(nameof(EnumUnityEventName.OrderPrepared), OnOrderPrepared);
+        UnityEventManager.RemoveListener(nameof(EnumUnityEventName.FlushPlayerInventory), FlushPlayerInventory);
     }
 }
