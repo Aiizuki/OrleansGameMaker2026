@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1428357342552992672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.78, y: -1.15565, z: -4.59}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.17976, y: 0.17976, z: 0.17976}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -127,3 +127,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PreparedDish
   _successMaterial: {fileID: 2100000, guid: 913f6f8caf3112e499ae34853fa87965, type: 2}
   _failureMaterial: {fileID: 2100000, guid: 07748db095af8ae43869e509c383ed3e, type: 2}
+  Plat: {fileID: 11400000, guid: 5ab3c1e6bd3755345b55af12a626b330, type: 2}

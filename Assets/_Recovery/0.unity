@@ -1028,7 +1028,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &673091458
 Transform:
   m_ObjectHideFlags: 0
@@ -1773,7 +1773,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1092382814}
+    m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7792316586724036885, guid: 2bf4e2794a10f254e88aa8cfd2383714, type: 3}
       propertyPath: m_LocalScale.x
@@ -1836,11 +1836,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2bf4e2794a10f254e88aa8cfd2383714, type: 3}
---- !u!4 &982654260 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7792316586724036885, guid: 2bf4e2794a10f254e88aa8cfd2383714, type: 3}
-  m_PrefabInstance: {fileID: 982654259}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1036801466
 GameObject:
   m_ObjectHideFlags: 0
@@ -2012,7 +2007,6 @@ Transform:
   - {fileID: 1497682747}
   - {fileID: 1388009573}
   - {fileID: 1280786142}
-  - {fileID: 982654260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1161199229 stripped
@@ -2080,51 +2074,6 @@ MonoBehaviour:
   - {fileID: 549273520}
   - {fileID: 1733928934}
   - {fileID: 1916556983}
---- !u!1 &1227484393
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1227484394}
-  - component: {fileID: 1227484395}
-  m_Layer: 0
-  m_Name: GameMaster
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1227484394
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227484393}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.92383, y: -1.15565, z: 0.09482}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1227484395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1227484393}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 39442ceff47d41ff98d4d1a97bd62927, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Core.Scripts.TimeManager
-  _settings: {fileID: 11400000, guid: 38966c563ed80b448993271bb8e18300, type: 2}
 --- !u!4 &1280786142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3595904656344578216, guid: 07c175eccb52eb245a2017f242d9ab70, type: 3}
@@ -2218,6 +2167,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1304488061}
+  - component: {fileID: 1304488060}
   - component: {fileID: 1304488059}
   m_Layer: 0
   m_Name: Singleton
@@ -2238,6 +2188,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 291da697d9e94fe5a7adb0a9f10132aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Scripts.UnityEventManager
+--- !u!114 &1304488060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304488058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39442ceff47d41ff98d4d1a97bd62927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Core.Scripts.TimeManager
+  _settings: {fileID: 11400000, guid: 38966c563ed80b448993271bb8e18300, type: 2}
 --- !u!4 &1304488061
 Transform:
   m_ObjectHideFlags: 0
@@ -4153,10 +4116,10 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 1227484394}
   - {fileID: 943777326}
   - {fileID: 1818997646}
   - {fileID: 808659498}
   - {fileID: 1092382814}
   - {fileID: 927443177}
   - {fileID: 673091458}
+  - {fileID: 982654259}

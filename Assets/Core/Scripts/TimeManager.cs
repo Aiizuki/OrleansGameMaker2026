@@ -19,8 +19,8 @@ namespace Core.Scripts
         {
             CancelEvents();
         }
-        
-        private void OnGameStart()
+
+        void Start()
         {
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.StartTime));
         }
@@ -59,7 +59,6 @@ namespace Core.Scripts
 
         void InitEvents()
         {
-            UnityEventManager.AddListener(nameof(EnumUnityEventName.GameStart), OnGameStart);
             UnityEventManager.AddListener(nameof(EnumUnityEventName.StartTime), StartOrderSpawn);
             UnityEventManager.AddListener(nameof(EnumUnityEventName.StartOrderSpawn), StartOrderSpawn);
             UnityEventManager.AddListener(nameof(EnumUnityEventName.StopOrderSpawn), StopOrderSpawn);
@@ -68,7 +67,6 @@ namespace Core.Scripts
 
         void CancelEvents()
         {
-            UnityEventManager.RemoveListener(nameof(EnumUnityEventName.GameStart), OnGameStart);
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StartTime), StartOrderSpawn);
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StartOrderSpawn), StartOrderSpawn);
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StopOrderSpawn), StopOrderSpawn);

@@ -33,7 +33,7 @@ public class StationScript : MonoBehaviour
         switch (stationType)
         {
             case StationType.Washing:
-                return EnumDishStatus.Washed;
+                return EnumDishStatus.Cutted;
             case StationType.Cooking:
                 return EnumDishStatus.Cooked;
             case StationType.Dressing:
