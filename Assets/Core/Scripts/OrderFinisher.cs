@@ -2,6 +2,7 @@ using System;
 using Core.Enums;
 using Core.Scripts;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Suit les ingrédients ramassés pour la commande en cours et, à OrderPrepared,
@@ -9,11 +10,20 @@ using UnityEngine;
 /// </summary>
 public class OrderFinisher : MonoBehaviour
 {
+    public UnityEvent ReactToGoodDish;
+    public UnityEvent ReactToShitDish;
     public void Deposit(PreparedDish dish)
     {
-        UnityEventManager.TriggerEvent(dish.IsFailed || dish.DishStatus != EnumDishStatus.Dressed
-            ? nameof(EnumUnityEventName.ShitDishDeposit)
-            : nameof(EnumUnityEventName.GoodDishDeposit));
+        if (dish.IsFailed || dish.DishStatus != EnumDishStatus.Dressed)
+        {
+            ReactToGoodDish.Invoke();
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.ShitDishDeposit));
+        }
+        else
+        {
+            ReactToGoodDish.Invoke();
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.GoodDishDeposit));
+        }
 
         GetComponent<Outliner>().HideOutline();
     }

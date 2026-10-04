@@ -5,6 +5,7 @@ using System.Linq;
 using Core.Enums;
 using JetBrains.Annotations;
 using UnityEngine;
+using UnityEngine.Events;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
@@ -15,7 +16,8 @@ namespace Core.Scripts
         [SerializeField] private CoreGameSettings _settings;
         [SerializeField] private List<GameObject> _lstSpawnPoints;
         [SerializeField] private GameObject _orderPrefab;
-
+        public UnityEvent ReactToNewOrder;
+        
         private List<Plat> _lstSpawnablePlats;
         
         // Point de spawn -> commande qui l'occupe (null si libre)
@@ -61,6 +63,7 @@ namespace Core.Scripts
 
             var plat = _lstSpawnablePlats[Random.Range(0, _lstSpawnablePlats.Count)];
             //Debug.Log("Je spawn le plat" + plat.Nom);
+            ReactToNewOrder.Invoke();
             var commande = Instantiate(_orderPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation, transform);
             if (!commande.TryGetComponent(out OrderTicket ticket))
             {

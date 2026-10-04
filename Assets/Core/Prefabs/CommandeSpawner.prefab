@@ -168,6 +168,7 @@ GameObject:
   - component: {fileID: 6938147804264892698}
   - component: {fileID: 1212108176554969658}
   - component: {fileID: 5535775275299433600}
+  - component: {fileID: 8996612728815026754}
   m_Layer: 6
   m_Name: Board
   m_TagString: Board
@@ -288,6 +289,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ff99972367ae347b3595cb597b0b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _onPlayerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  _onPlayerExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8996612728815026754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821934071623409817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 2021238593
+      Data2: 1309128119
+      Data3: 1768475543
+      Data4: 53762269
+    Path: event:/Sons/NewTicket
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: -1
+  OverrideMaxDistance: -1
 --- !u!1 &7118693131307902306
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,6 +382,21 @@ MonoBehaviour:
   - {fileID: 3492570908984725657}
   - {fileID: 1472203425701512672}
   _orderPrefab: {fileID: 4102857995208333671, guid: bfd4c1599f291774daf1c70845721179, type: 3}
+  ReactToNewOrder:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8996612728815026754}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7174630273549423717
 GameObject:
   m_ObjectHideFlags: 0

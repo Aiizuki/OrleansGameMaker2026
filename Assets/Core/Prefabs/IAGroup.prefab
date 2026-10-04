@@ -2152,7 +2152,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1011567732300982985}
   - component: {fileID: 798723898799575303}
-  - component: {fileID: 8302837254821901489}
   m_Layer: 0
   m_Name: IAGroup
   m_TagString: Untagged
@@ -2201,37 +2200,6 @@ MonoBehaviour:
   cleaningStation: {fileID: 2059854449574879905}
   dressingStation: {fileID: 4741169931372513372}
   pickupStations: {fileID: 4801619983380880847}
---- !u!114 &8302837254821901489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9193850810371614546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
-  CollisionTag: 
-  EventReference:
-    Guid:
-      Data1: -823947273
-      Data2: 1286514885
-      Data3: 1517623171
-      Data4: 448900360
-    Path: event:/Ambiances/CuisineAmbiance
-  Event: 
-  EventPlayTrigger: 1
-  EventStopTrigger: 2
-  AllowFadeout: 1
-  TriggerOnce: 0
-  Preload: 0
-  NonRigidbodyVelocity: 0
-  Params: []
-  OverrideAttenuation: 0
-  OverrideMinDistance: 1
-  OverrideMaxDistance: 20
 --- !u!1001 &3889606655529637681
 PrefabInstance:
   m_ObjectHideFlags: 0

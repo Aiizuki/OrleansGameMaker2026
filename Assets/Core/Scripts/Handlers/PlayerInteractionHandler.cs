@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Core.Enums;
 using Core.Scripts;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 public class PlayerInteractionHandler : MonoBehaviour
@@ -10,6 +11,9 @@ public class PlayerInteractionHandler : MonoBehaviour
     [Header("Inputs")] [SerializeField] private InputActionReference _InteractAction;
 
     [Header("Order")] [SerializeField] private int _maxPickedIngredients = 5;
+    public UnityEvent ReactToPlayerPickupCardboard;
+    public UnityEvent ReactToPlayerPickupPlate;
+    public UnityEvent ReactToPlayerPickupOrder;
 
     public GameObject Interactible = null;
     private bool _isInteracting = false;
@@ -56,6 +60,7 @@ public class PlayerInteractionHandler : MonoBehaviour
         _currentOrder = null;
         _remainingIngredients.Clear();
         _inventory.Clear();
+        
     }
 
     private void ResetRemainingIngredients()
@@ -104,6 +109,7 @@ public class PlayerInteractionHandler : MonoBehaviour
         if (Interactible.gameObject.CompareTag("OrderPreparer"))
         {
             Debug.Log("Interaction with OrderPreparer");
+            ReactToPlayerPickupPlate.Invoke();
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.OrderPrepared));
         }
 
@@ -117,6 +123,7 @@ public class PlayerInteractionHandler : MonoBehaviour
             }
 
             Debug.Log("Interact board");
+            ReactToPlayerPickupOrder.Invoke();
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.TakeOrder));
         }
         else if (Interactible.gameObject.CompareTag("Product"))
@@ -137,6 +144,7 @@ public class PlayerInteractionHandler : MonoBehaviour
             Plat selectedProduct = stock.TakeProduct();
             _inventory.Add(selectedProduct);
             Debug.Log("Récupération du produit" + selectedProduct.Nom);
+            ReactToPlayerPickupCardboard.Invoke();
 
             // Remove n'enlève qu'une occurrence : gère les ingrédients demandés plusieurs fois
             if (_remainingIngredients.Remove(selectedProduct))
@@ -162,6 +170,7 @@ public class PlayerInteractionHandler : MonoBehaviour
                 GameObject dish = Interactible.GetComponent<WaitingStation>().Take();
                 _finishedDish = dish.GetComponent<PreparedDish>();
                 dish.SetActive(false);
+                ReactToPlayerPickupPlate.Invoke();
                 Debug.Log($"Tu as ramassé {_finishedDish.Plat.Nom}");
             }
         }
@@ -171,6 +180,7 @@ public class PlayerInteractionHandler : MonoBehaviour
                 Debug.Log("Tu n'as pas de plat à déposer !");
             else
             {
+                ReactToPlayerPickupPlate.Invoke();
                 Debug.Log($"Tu as déposé {_finishedDish.Plat.Nom} !");
                 Interactible.GetComponent<OrderFinisher>().Deposit(_finishedDish);
                 Destroy(_finishedDish.gameObject);

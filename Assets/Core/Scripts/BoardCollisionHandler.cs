@@ -7,6 +7,7 @@ public class BoardCollisionHandler : MonoBehaviour
     [Header("Events")]
     [SerializeField] private UnityEvent _onPlayerEnter;
     [SerializeField] private UnityEvent _onPlayerExit;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
