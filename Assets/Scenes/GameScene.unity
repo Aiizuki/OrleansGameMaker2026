@@ -2227,6 +2227,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameMaster
   _player: {fileID: 5286046554537920479, guid: 24de33ccdb23be34f8dd02ef9fb74517, type: 3}
   _settings: {fileID: 11400000, guid: 214345750932be049a0eba140271c176, type: 2}
+  _timeManager: {fileID: 1227484395}
 --- !u!4 &1280786142 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3595904656344578216, guid: 07c175eccb52eb245a2017f242d9ab70, type: 3}

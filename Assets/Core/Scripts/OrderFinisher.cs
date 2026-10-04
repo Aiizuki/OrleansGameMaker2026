@@ -12,11 +12,14 @@ public class OrderFinisher : MonoBehaviour
 {
     public UnityEvent ReactToGoodDish;
     public UnityEvent ReactToShitDish;
+    
     public void Deposit(PreparedDish dish)
     {
+        UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.DishServed), dish);
+
         if (dish.IsFailed || dish.DishStatus != EnumDishStatus.Dressed)
         {
-            ReactToGoodDish.Invoke();
+            ReactToShitDish.Invoke();
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.ShitDishDeposit));
         }
         else
