@@ -2264,6 +2264,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 32d2d50ed35dc7e4a9a44b915c6b8c12, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2444,6 +2448,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 32d2d50ed35dc7e4a9a44b915c6b8c12, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2624,6 +2632,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 32d2d50ed35dc7e4a9a44b915c6b8c12, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
