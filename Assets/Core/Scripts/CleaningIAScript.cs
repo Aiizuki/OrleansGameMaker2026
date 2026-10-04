@@ -17,7 +17,10 @@ public enum MoveDestination
 }
 
 public class CleaningIAScript : MonoBehaviour
-{ 
+{
+
+    [SerializeField] GameObject StarEmitter;
+
     public GameObject hands;
     public Canvas exclamationMark;
     public float speed;
@@ -253,6 +256,8 @@ public class CleaningIAScript : MonoBehaviour
         {
             Debug.Log("MAIS J'AI RIEN FAIT :(");
         }
+
+        Instantiate(StarEmitter, exclamationMark.transform.position - (Vector3.up * 0.5f), Quaternion.Euler(-90,0,0));
     }
 
     private void OnTriggerEnter(Collider other)

@@ -3,7 +3,7 @@ namespace Core.Enums
     public enum EnumDishStatus
     {
         Raw,
-        Washed,
+        Cutted,
         Cooked,
         Dressed
     }
