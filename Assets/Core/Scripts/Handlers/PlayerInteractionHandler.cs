@@ -113,6 +113,9 @@ public class PlayerInteractionHandler : MonoBehaviour
         if (Interactible.gameObject.CompareTag("OrderPreparer"))
         {
             Debug.Log("Interaction with OrderPreparer");
+            if (_inventory is null || _inventory.Count == 0)
+                return;
+            
             ReactToPlayerPickupPlate.Invoke();
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.OrderPrepared));
         }
