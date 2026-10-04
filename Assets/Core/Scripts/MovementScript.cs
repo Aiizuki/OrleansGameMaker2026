@@ -1,9 +1,11 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UIElements;
 
 public class MovementScript : MonoBehaviour
 {
     [Header("Inputs")] [SerializeField] private InputActionReference _moveLeftAction;
+    [SerializeField] private Camera _camera;
     [SerializeField] private InputActionReference _moveRightAction;
     [SerializeField] private InputActionReference _moveForwardAction;
     [SerializeField] private InputActionReference _moveBackwardAction;
@@ -81,10 +83,11 @@ public class MovementScript : MonoBehaviour
         }
 
         _moveDirection.Normalize();
-        gameObject.GetComponent<Rigidbody>().linearVelocity = _moveDirection * _settings.Speed;
+        Vector3 CorrectedDirectionVector = Quaternion.AngleAxis(_camera.transform.eulerAngles.y, Vector3.up) * new Vector3(_moveDirection.x, 0, _moveDirection.z).normalized;
+        gameObject.GetComponent<Rigidbody>().linearVelocity = CorrectedDirectionVector * _settings.Speed;
         if (_moveDirection.sqrMagnitude > 0)
         {
-            transform.rotation = Quaternion.LookRotation(_moveDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(CorrectedDirectionVector), 0.4f);
             _animatorController.SetBool("Walking", true);
         }
         else
