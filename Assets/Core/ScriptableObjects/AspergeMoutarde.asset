@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4727778acd0fa1b45ac631589c6d318f, type: 3}
+  m_Name: AspergeMoutarde
+  m_EditorClassIdentifier: Assembly-CSharp::Plat
+  Nom: "Moutarde d'Orl\xE9ans aux Asperges"
+  Icon: {fileID: 0}
+  _modelRaw: {fileID: 919132149155446097, guid: 7e4e63e9f5a593b438052688b0b15336, type: 3}
+  _modelWashed: {fileID: 919132149155446097, guid: 500db7bbb30ef3a4cbb1fb7a93294394, type: 3}
+  _modelButchered: {fileID: 919132149155446097, guid: 1f0e7b93652a16147b84690495ff3f5b, type: 3}
+  _modelCooked: {fileID: 919132149155446097, guid: 126db400e2feafb4da7151704f66c3d4, type: 3}
+  _modelOvercooked: {fileID: 919132149155446097, guid: 8f788db5a9648414197d919e9e0289c7, type: 3}
+  _modelDressed: {fileID: 919132149155446097, guid: 1791c31fde164964489c86364ec879e9, type: 3}
+  _modelRuined: {fileID: 919132149155446097, guid: 1f8cb4f329c0d394ca661a5b47226c90, type: 3}
+  _modelFailed: {fileID: 919132149155446097, guid: 79d92148d32ddf24693926e3eb64b7d4, type: 3}
+  Ingredients:
+  - {fileID: 11400000, guid: d7fc1c784d4bde64ab26f8f280b8e58d, type: 2}
+  - {fileID: 11400000, guid: 8b6b5164d16c40744a040d8abf357c83, type: 2}

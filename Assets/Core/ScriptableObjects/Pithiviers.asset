@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4727778acd0fa1b45ac631589c6d318f, type: 3}
+  m_Name: Pithiviers
+  m_EditorClassIdentifier: Assembly-CSharp::Plat
+  Nom: Pithiviers
+  Icon: {fileID: 0}
+  _modelRaw: {fileID: 919132149155446097, guid: 7e4e63e9f5a593b438052688b0b15336, type: 3}
+  _modelWashed: {fileID: 919132149155446097, guid: 4524b218c62cc4b44bad2ca62e64eabe, type: 3}
+  _modelButchered: {fileID: 919132149155446097, guid: f5cad191ec8ab6f44b444cca5172e01c, type: 3}
+  _modelCooked: {fileID: 919132149155446097, guid: ae5df833e6dda914e942c2f71b1b016a, type: 3}
+  _modelOvercooked: {fileID: 919132149155446097, guid: a8252cad40a59bd40b8561d65c9d17c2, type: 3}
+  _modelDressed: {fileID: 919132149155446097, guid: 96c672291f2d4a248a0a5d12e4591a05, type: 3}
+  _modelRuined: {fileID: 919132149155446097, guid: bf8c0e4306164bb49994db10708cd82a, type: 3}
+  _modelFailed: {fileID: 919132149155446097, guid: 79d92148d32ddf24693926e3eb64b7d4, type: 3}
+  Ingredients:
+  - {fileID: 11400000, guid: b7e1d60e52b39a64893424d7d54898bd, type: 2}
+  - {fileID: 11400000, guid: e562322fc1298904fada5f65d229ecdc, type: 2}
+  - {fileID: 11400000, guid: 23dd2b8c5066ef24e9daa932ce8e3d64, type: 2}
+  - {fileID: 11400000, guid: de969717355b0204291f724796ecfe3b, type: 2}
