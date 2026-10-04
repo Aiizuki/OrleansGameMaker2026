@@ -1822,6 +1822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc44570bfe4926b4c974691dcd77b910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleaningIAScript
+  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
   hands: {fileID: 2001464914426488725}
   exclamationMark: {fileID: 8342979369076923281}
   speed: 0.1
@@ -1958,6 +1959,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc44570bfe4926b4c974691dcd77b910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleaningIAScript
+  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
   hands: {fileID: 6327613060062025465}
   exclamationMark: {fileID: 1174338811714887183}
   speed: 0.1
@@ -2089,6 +2091,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc44570bfe4926b4c974691dcd77b910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
   hands: {fileID: 2333636085478918363}
   exclamationMark: {fileID: 1797126130649692282}
   speed: 0.1
