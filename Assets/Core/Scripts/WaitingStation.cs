@@ -23,7 +23,7 @@ public class WaitingStation : MonoBehaviour
         switch (stationMode)
         {
             case IOAction.Pull:
-                Deposit();
+                Deposit(null);
                 break;
             case IOAction.Push:
                 PushToLinkedStation();
@@ -31,13 +31,20 @@ public class WaitingStation : MonoBehaviour
         }
     }
 
-    public void Deposit()
+    public void Deposit([CanBeNull] GameObject objectToDeposit)
     {
-        if (!CheckToPull())
+        if (!CheckToPull() && !objectToDeposit)
             return;
 
-        objectsWaiting.Add(linkedStation.GetComponent<StationScript>().objectAtInput);
-        linkedStation.GetComponent<StationScript>().objectAtInput = null;
+        if (objectToDeposit)
+        {
+            objectsWaiting.Add(objectToDeposit);
+        }
+        else
+        {
+            objectsWaiting.Add(linkedStation.GetComponent<StationScript>().objectAtInput);
+            linkedStation.GetComponent<StationScript>().objectAtInput = null;
+        }
         UpdateVisuals();
     }
 

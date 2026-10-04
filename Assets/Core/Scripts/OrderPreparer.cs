@@ -65,7 +65,7 @@ public class OrderPreparer : MonoBehaviour
         // Appel direct sur l'instance pour ne pas recolorer les autres plats déjà posés
         bool success = !_hasWrongIngredient && _collectedCount == _currentOrder.Ingredients.Count;
         if (success)
-            dish.SetSuccess();
+            dish.SetMesh();
         else
             dish.FailDish();
 
