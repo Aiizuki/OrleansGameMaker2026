@@ -1162,6 +1162,43 @@ MonoBehaviour:
   m_ShadowLayerMask: 1
   m_RenderingLayers: 1
   m_ShadowRenderingLayers: 1
+--- !u!1001 &471785894
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2133655667}
+    m_Modifications:
+    - target: {fileID: 2099488792322951094, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_Name
+      value: Dust Emitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
 --- !u!1 &512158498
 GameObject:
   m_ObjectHideFlags: 0
@@ -1289,43 +1326,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!1001 &471785894
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 2133655667}
-    m_Modifications:
-    - target: {fileID: 2099488792322951094, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_Name
-      value: Dust Emitter
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
 --- !u!1001 &532839657
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2154,7 +2154,7 @@ PrefabInstance:
       objectReference: {fileID: -1596604862302846449, guid: fd9d3ab2b269a644f9b8018ddc453292, type: 2}
     - target: {fileID: 1432272273251724996, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_enableAutoSizing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1432272273251724996, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_hasFontAssetChanged
@@ -2162,12 +2162,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2065197404857053592, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 3475227991282685366, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
+    - target: {fileID: 3484143649806995523, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
+      propertyPath: DustEmitter
+      value: 
+      objectReference: {fileID: 1991797074}
     - target: {fileID: 4206384963782606579, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_fontAsset
       value: 
@@ -2202,16 +2206,12 @@ PrefabInstance:
       objectReference: {fileID: -1596604862302846449, guid: fd9d3ab2b269a644f9b8018ddc453292, type: 2}
     - target: {fileID: 4206384963782606579, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_enableAutoSizing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4206384963782606579, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3484143649806995523, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
-      propertyPath: DustEmitter
-      value: 
-      objectReference: {fileID: 1991797074}
     - target: {fileID: 4636188536644182080, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: DustEmitter
       value: 
@@ -2246,11 +2246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5557658924669450125, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_enableAutoSizing
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7408753733698449944, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.8
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 9193850810371614546, guid: 1b3389efb6d82ed46b88a1a012830cbf, type: 3}
       propertyPath: m_Name
@@ -2434,6 +2434,8 @@ MonoBehaviour:
   _countdownText: {fileID: 1907249905}
   _goText: GO!
   _goDisplayDuration: 0.8
+  _zoomStartScale: 2
+  _zoomDuration: 0.3
 --- !u!1 &955276671
 GameObject:
   m_ObjectHideFlags: 0
@@ -5207,6 +5209,43 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
+--- !u!1001 &2067860162
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 801628943}
+    m_Modifications:
+    - target: {fileID: 2099488792322951094, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_Name
+      value: Dust Emitter
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
 --- !u!1 &2118759238
 GameObject:
   m_ObjectHideFlags: 0
@@ -5334,43 +5373,6 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!1001 &2067860162
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 801628943}
-    m_Modifications:
-    - target: {fileID: 2099488792322951094, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_Name
-      value: Dust Emitter
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.36
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0.85
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8937720182359994893, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
 --- !u!1 &2133651261
 GameObject:
   m_ObjectHideFlags: 0

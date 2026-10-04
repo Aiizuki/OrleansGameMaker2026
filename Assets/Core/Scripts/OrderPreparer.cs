@@ -54,7 +54,7 @@ public class OrderPreparer : MonoBehaviour
 
     private void PrepareOrder()
     {
-        if (_currentOrder == null)
+        if (_currentOrder == null || _collectedCount == 0)
         {
             Debug.LogWarning("Aucune commande en cours : rien à préparer");
             return;
