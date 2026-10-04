@@ -180,6 +180,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 11742
+--- !u!114 &-2313739389206376639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sons/TakeIngredients
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Sons/TakeIngredients
+  Guid:
+    Data1: 245295461
+    Data2: 1137441209
+    Data3: -956137061
+    Data4: -942894231
+  Banks:
+  - {fileID: 3536507666506997273}
+  IsStream: 0
+  Is3D: 1
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 50
+  Length: 0
 --- !u!114 &-2237126246673973031
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -399,14 +426,14 @@ MonoBehaviour:
   - {fileID: 7764479772505859824}
   - {fileID: 2134478865687628366}
   - {fileID: 2514045520552964661}
-  - {fileID: 8538424483422242520}
+  - {fileID: -2313739389206376639}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3536507666506997273}
   StringsBanks:
   - {fileID: 3388455998225100526}
   cacheVersion: 131861
-  cacheTime: 639267229606600139
+  cacheTime: 639267234612242986
   SerializableEventsDict:
   - key: event:/Sons/PutToTrash
     index: 0
@@ -588,7 +615,7 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639267229606600139
+  lastModified: 639267234612242986
   FileSizes:
   - Name: 
     Value: 1418
@@ -608,7 +635,7 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639267229606580204
+  lastModified: 639267234612237965
   FileSizes: []
   Exists: 1
 --- !u!114 &3856259593804356942

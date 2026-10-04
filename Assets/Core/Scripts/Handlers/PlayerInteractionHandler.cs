@@ -8,9 +8,11 @@ using UnityEngine.InputSystem;
 
 public class PlayerInteractionHandler : MonoBehaviour
 {
-    [Header("Inputs")] [SerializeField] private InputActionReference _InteractAction;
+    [Header("Inputs")] 
+    [SerializeField] private InputActionReference _InteractAction;
 
-    [Header("Order")] [SerializeField] private int _maxPickedIngredients = 5;
+    [Header("Settings")] 
+    [SerializeField] private CoreGameSettings _settings;
     public UnityEvent ReactToPlayerPickupCardboard;
     public UnityEvent ReactToPlayerPickupPlate;
     public UnityEvent ReactToPlayerPickupOrder;
@@ -37,6 +39,8 @@ public class PlayerInteractionHandler : MonoBehaviour
 
     private void OnDestroy()
     {
+        FlushPlayerInventory();
+        Interactible = null;
         RevokeEvents();
     }
 
@@ -134,9 +138,9 @@ public class PlayerInteractionHandler : MonoBehaviour
                 return;
             }
 
-            if (_inventory.Count >= _maxPickedIngredients)
+            if (_inventory.Count >= _settings.MaxPickableIngredients)
             {
-                Debug.Log("Impossible de prendre plus de " + _maxPickedIngredients + " ingrédients");
+                Debug.Log("Impossible de prendre plus de " + _settings.MaxPickableIngredients + " ingrédients");
                 return;
             }
 

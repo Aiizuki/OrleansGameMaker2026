@@ -3,12 +3,21 @@ using Core.Scripts;
 using UnityEngine;
 
 /// <summary>
-/// Plat préparé posé dans la scène : affiche un matériau vert (succès) ou rouge (échec).
-/// L'état peut être changé à tout moment via les events DishSucceeded / DishFailed.
+/// Plat préparé posé dans la scène : affiche le modèle FBX correspondant à son état (étape + échec).
+/// Le modèle est instancié en enfant de _visualRoot (et non un simple swap de Mesh) pour garder
+/// les matériaux, les sous-objets et la rotation / échelle d'import du FBX.
+/// Les events DishSucceeded / DishFailed ne font que rafraîchir le modèle, sans changer l'état.
 /// </summary>
 public class PreparedDish : MonoBehaviour
 {
     public Plat Plat;
+
+    [Tooltip("Parent du modèle instancié (porte l'échelle du visuel). Utilise ce transform si vide.")]
+    [SerializeField] private Transform _visualRoot;
+
+    [Header("Effet de changement de modèle")]
+    [Tooltip("Placeholder : à remplacer par le vrai effet woosh. Ne pas le mettre sous Visual.")]
+    [SerializeField] private ParticleSystem _wooshParticles;
 
     // État propre à cette instance : Plat est un ScriptableObject partagé par toutes les commandes,
     // le modifier ferait échouer tous les plats suivants (et persisterait dans l'asset en éditeur)
@@ -17,8 +26,14 @@ public class PreparedDish : MonoBehaviour
 
     private bool _overFailed = false;
 
+    private GameObject _currentModelPrefab;
+    private GameObject _currentModelInstance;
+
     void Awake()
     {
+        if (_visualRoot == null)
+            _visualRoot = transform;
+
         InitEvents();
     }
 
@@ -30,21 +45,79 @@ public class PreparedDish : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     public void SetMesh()
     {
-        gameObject.GetComponent<MeshFilter>().mesh =  Plat.GetMeshFromState(IsFailed, DishStatus, _overFailed);
+        if (Plat == null)
+        {
+            Debug.LogWarning($"[PreparedDish] Aucun Plat assigné sur {name} !");
+            return;
+        }
+
+        GameObject modelPrefab = Plat.GetModelFromState(IsFailed, DishStatus, _overFailed);
+        if (modelPrefab == null)
+        {
+            Debug.LogWarning($"[PreparedDish] Pas de modèle pour {Plat.Nom} (état {DishStatus}, raté : {IsFailed}) !");
+            return;
+        }
+
+        // Les events DishSucceeded / DishFailed touchent tous les plats : on ne recrée que si le modèle change
+        if (modelPrefab == _currentModelPrefab)
+            return;
+
+        bool hadModel = _currentModelInstance != null;
+        if (hadModel)
+            Destroy(_currentModelInstance);
+
+        // worldPositionStays = false : garde la rotation / échelle locales d'import du FBX
+        _currentModelInstance = Instantiate(modelPrefab, _visualRoot, false);
+        _currentModelPrefab = modelPrefab;
+
+        // Le BoxCollider racine gère les interactions : un collider dans le FBX les perturberait
+        foreach (Collider modelCollider in _currentModelInstance.GetComponentsInChildren<Collider>())
+            Destroy(modelCollider);
+
+        // Pas de woosh à l'apparition du plat, seulement quand il change de modèle
+        if (hadModel)
+            PlayModelChangeEffect();
     }
 
-    public void SetState(EnumDishStatus status)
+    // L'échec / overfail ne change qu'à la fin d'une étape : FailDish (fin de la préparation par le joueur)
+    // et ApplyStationResult (fin du travail d'une station). Une fois raté, le plat le reste :
+    // un nouvel échec à une étape suivante (ou à la 1re station après une préparation ratée) donne l'overfail.
+
+    /// <summary>Fin de la préparation par le joueur avec un mauvais ingrédient (compte comme un premier échec).</summary>
+    public void FailDish()
+    {
+        MarkFailed();
+        SetMesh();
+    }
+
+    /// <summary>
+    /// Résultat du travail d'une station : change l'étape et l'échec en un seul rafraîchissement,
+    /// pour ne pas afficher un modèle intermédiaire (ni jouer deux wooshs).
+    /// </summary>
+    public void ApplyStationResult(EnumDishStatus status, bool failed)
     {
         DishStatus = status;
+        if (failed)
+            MarkFailed();
+        SetMesh();
     }
 
-    public void FailDish()
+    private void MarkFailed()
     {
         if (IsFailed)
             _overFailed = true;
         else
             IsFailed = true;
-        SetMesh();
+    }
+
+    private void PlayModelChangeEffect()
+    {
+        // TODO: brancher le vrai particle system de woosh
+        if (_wooshParticles == null)
+            return;
+
+        _wooshParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        _wooshParticles.Play();
     }
 
     #region UnityEvents

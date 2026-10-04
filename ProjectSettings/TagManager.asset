@@ -11,6 +11,7 @@ TagManager:
   - Bin
   - OrderStation
   - OrderDeposit
+  - Victime
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Board
   - PreparedOrder
   - PNJ
-  - 
+  - Player
   - 
   - 
   - 

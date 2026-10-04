@@ -58,12 +58,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273a90b65caf6774ca6542fa842ccde3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneTransitionHandler
-  fadeCanvasGroup: {fileID: 0}
+  fadeCanvasGroup: {fileID: 5593705872592971702}
   fadeDuration: 0.5
   blackScreenDuration: 0.3
   _homeScene: {fileID: 102900000, guid: 1be5d855ecd88d74696d6489d2723bca, type: 3}
   _gameScene: {fileID: 102900000, guid: 99c9720ab356a0642a771bea13969a05, type: 3}
-  _gameOverScene: {fileID: 0}
+  _gameOverScene: {fileID: 102900000, guid: 4c6f85d80654ea3459aa899ef94c5926, type: 3}
 --- !u!1 &3882579498921692254
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ namespace Core.Scripts
         [SerializeField] private TimeSettings _settings;
 
         private Coroutine _spawnRoutine;
+        private bool _isTimeRunning;
 
         void Awake()
         {
@@ -22,16 +23,43 @@ namespace Core.Scripts
 
         void Start()
         {
+            StartCoroutine(StartGameRoutine());
+        }
+
+        /// <summary>
+        /// Attend que tous les Start de la scène soient passés, lance la partie (GameStart),
+        /// joue le décompte puis démarre le temps (StartTime).
+        /// </summary>
+        private IEnumerator StartGameRoutine()
+        {
+            // L'ordre des Start entre objets n'est pas garanti : on laisse passer une frame
+            yield return null;
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.GameStart));
+
+            for (int remaining = _settings.StartCountdownDuration; remaining > 0; remaining--)
+            {
+                UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.CountdownTick), remaining);
+                yield return new WaitForSeconds(1f);
+            }
+
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.CountdownTick), 0);
+            _isTimeRunning = true;
+            // Lance en même temps le spawn des commandes (ici) et la baisse du slider (AngrySliderHandler)
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.StartTime));
         }
 
         private void StopTime()
         {
+            _isTimeRunning = false;
             StopOrderSpawn();
         }
 
         private void StartOrderSpawn()
         {
+            // StartOrderSpawn peut être déclenché d'ailleurs (prise de commande) : rien avant la fin du décompte
+            if (!_isTimeRunning)
+                return;
+
             _spawnRoutine ??= StartCoroutine(HandleSpawnTimeCycle());
         }
 

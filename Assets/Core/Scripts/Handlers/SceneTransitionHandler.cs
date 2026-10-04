@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using Core.Enums;
 using Core.Scripts;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,18 +16,22 @@ namespace Assets.Components.UI
 		[SerializeField] private float fadeDuration = 0.5f;
 		[SerializeField] private float blackScreenDuration = 0.3f;
 
-		[SerializeField] private SceneAsset _homeScene;
-		[SerializeField] private SceneAsset _gameScene;
-		[SerializeField] private SceneAsset _gameOverScene;
+		[SerializeField] private string _homeScene;
+		[SerializeField] private string _gameScene;
+		[SerializeField] private string _gameOverScene;
 
 		private void Start()
 		{
-			UnityEventManager.AddListener(nameof(EnumUnityEventName.GameStart), OnNewGame);
+			UnityEventManager.AddListener(nameof(EnumUnityEventName.NewGame), OnNewGame);
+			UnityEventManager.AddListener(nameof(EnumUnityEventName.ReturnToHome), OnReturnToHome);
+			UnityEventManager.AddListener(nameof(EnumUnityEventName.GameOver), OnGameOver);
 		}
 
 		private void OnDestroy()
 		{
-			UnityEventManager.RemoveListener(nameof(EnumUnityEventName.GameStart), OnNewGame);
+			UnityEventManager.RemoveListener(nameof(EnumUnityEventName.NewGame), OnNewGame);
+			UnityEventManager.RemoveListener(nameof(EnumUnityEventName.ReturnToHome), OnReturnToHome);
+			UnityEventManager.RemoveListener(nameof(EnumUnityEventName.GameOver), OnGameOver);
 		}
 
 		[Obsolete("Not used in this project ATM")]
@@ -37,12 +40,12 @@ namespace Assets.Components.UI
 			StartCoroutine(ReloadSceneRoutine());
 		}
 
-		private IEnumerator TransitionToScene(SceneAsset scene)
+		private IEnumerator TransitionToScene(string scene)
 		{
 			yield return StartCoroutine(FadeToBlack());
 			yield return new WaitForSeconds(blackScreenDuration);
 
-			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene.name);
+			AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(scene);
 			while (!asyncLoad.isDone)
 				yield return null;
 

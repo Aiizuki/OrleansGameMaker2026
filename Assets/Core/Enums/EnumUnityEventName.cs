@@ -4,8 +4,12 @@ namespace Core.Enums
 {
     public enum EnumUnityEventName
     {
+        [Description("Fired one frame after the game scene is loaded, before the countdown: (re)spawns the player")]
         GameStart,
         GameOver,
+
+        [Description("Countdown before the game starts (param: remaining seconds, 0 when the game starts)")]
+        CountdownTick,
 
         [Description("Starts everything driven by time (order spawn, angry slider decrease)")]
         StartTime,
@@ -74,10 +78,14 @@ namespace Core.Enums
         GoodDishDeposit,
         
         [Description("Fired when the player submit a failed dish")]
-        ShitDishDeposit
+        ShitDishDeposit,
+        
+        [Description("Fired when the player click on the play button")]
+        NewGame,
+        
+        [Description("Fired when the player click on the return to home button in gameover scene")]
+        ReturnToHome,
         
         #endregion BackgroundEvents
-
-        
     }
 }

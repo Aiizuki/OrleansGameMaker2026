@@ -13,14 +13,22 @@ public class IngredientSpawner : MonoBehaviour
 
     void Awake()
     {
-        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.SpawnStorage), SpawnStorage);
-        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.ReturnToStorage), ReturnToStorage);
-
         _spawnPoints = new Dictionary<Transform, ProductStockHandler>();
         foreach (var spawnPoint in _lstSpawnPoints)
         {
             _spawnPoints.Add(spawnPoint, null);
         }
+
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.SpawnStorage), SpawnStorage);
+        UnityEventManager.AddListener<Plat>(nameof(EnumUnityEventName.ReturnToStorage), ReturnToStorage);
+    }
+
+    // Les events sont statiques et survivent au rechargement de scène : sans ça, le spawner
+    // détruit de la partie précédente continue de recevoir SpawnStorage
+    private void OnDestroy()
+    {
+        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.SpawnStorage), SpawnStorage);
+        UnityEventManager.RemoveListener<Plat>(nameof(EnumUnityEventName.ReturnToStorage), ReturnToStorage);
     }
 
     private void SpawnStorage(Plat plat)

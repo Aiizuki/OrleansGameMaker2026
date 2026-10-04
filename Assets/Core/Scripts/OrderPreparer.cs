@@ -61,15 +61,16 @@ public class OrderPreparer : MonoBehaviour
         }
 
         var dish = Instantiate(_preparedDishPrefab, _spawnPoint.position, _spawnPoint.rotation);
+        // Avant SetMesh / FailDish : le modèle affiché dépend du Plat
+        dish.Plat = _currentOrder;
 
-        // Appel direct sur l'instance pour ne pas recolorer les autres plats déjà posés
+        // Appel direct sur l'instance pour ne pas modifier les autres plats déjà posés
         bool success = !_hasWrongIngredient && _collectedCount == _currentOrder.Ingredients.Count;
         if (success)
             dish.SetMesh();
         else
             dish.FailDish();
 
-        dish.Plat = _currentOrder;
         _waitingStation.GetComponent<WaitingStation>().AddObjectToWaiting(dish.gameObject);
         
         GetComponent<Outliner>().HideOutline();

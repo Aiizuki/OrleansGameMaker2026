@@ -1,3 +1,5 @@
+using Core.Enums;
+using Core.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
@@ -15,69 +17,58 @@ public class MovementScript : MonoBehaviour
 
     private Vector3 _moveDirection;
 
-    private bool _isMovingLeft = false;
-    private bool _isMovingRight = false;
-    private bool _isMovingForward = false;
-    private bool _isMovingBackward = false;
-
+    // Bloqué pendant le décompte de début de partie, débloqué au StartTime
+    private bool _canMove = false;
 
     private void Awake()
     {
-        var actionMap = InputSystem.actions.FindActionMap("Inpute");
         InitEvents();
     }
-    
+
     void OnDestroy()
     {
         RevokeEvents();
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         HandleMovement();
     }
 
-
-    private void MoveLeft(InputAction.CallbackContext obj)
+    private void EnableMovement()
     {
-        _isMovingLeft = !_isMovingLeft;
-    }
-
-    private void MoveRight(InputAction.CallbackContext obj)
-    {
-        _isMovingRight = !_isMovingRight;
-    }
-
-    private void MoveForward(InputAction.CallbackContext obj)
-    {
-        _isMovingForward = !_isMovingForward;
-    }
-
-    private void MoveBackward(InputAction.CallbackContext obj)
-    {
-        _isMovingBackward = !_isMovingBackward;
+        _canMove = true;
     }
 
     private void HandleMovement()
     {
         _moveDirection = Vector3.zero;
-        if (_isMovingLeft)
+
+        if (!_canMove)
+        {
+            gameObject.GetComponent<Rigidbody>().linearVelocity = Vector3.zero;
+            _animatorController.SetBool("Walking", false);
+            return;
+        }
+
+        // On lit l'état réel des touches à chaque frame plutôt que d'inverser un booléen à chaque
+        // event "Press and Release" : un seul event perdu (spam, perte de focus) bloquait la direction
+        if (_moveLeftAction.action.IsPressed())
         {
             _moveDirection.x -= 1;
         }
 
-        if (_isMovingRight)
+        if (_moveRightAction.action.IsPressed())
         {
             _moveDirection.x += 1;
         }
 
-        if (_isMovingForward)
+        if (_moveForwardAction.action.IsPressed())
         {
             _moveDirection.z += 1;
         }
 
-        if (_isMovingBackward)
+        if (_moveBackwardAction.action.IsPressed())
         {
             _moveDirection.z -= 1;
         }
@@ -100,18 +91,12 @@ public class MovementScript : MonoBehaviour
 
     private void InitEvents()
     {
-        _moveLeftAction.action.performed += MoveLeft;
-        _moveRightAction.action.performed += MoveRight;
-        _moveForwardAction.action.performed += MoveForward;
-        _moveBackwardAction.action.performed += MoveBackward;
+        UnityEventManager.AddListener(nameof(EnumUnityEventName.StartTime), EnableMovement);
     }
 
     private void RevokeEvents()
     {
-        _moveLeftAction.action.performed -= MoveLeft;
-        _moveRightAction.action.performed -= MoveRight;
-        _moveForwardAction.action.performed -= MoveForward;
-        _moveBackwardAction.action.performed -= MoveBackward;
+        UnityEventManager.RemoveListener(nameof(EnumUnityEventName.StartTime), EnableMovement);
     }
 
     #endregion UnityEvents

@@ -11,7 +11,7 @@ public class CoreGameSettings : ScriptableObject
     public float Speed = 10f;
 
     [Tooltip("Define the player spawn position")]
-    public Vector3 SpawnPosition;
+    public Vector3 SpawnPosition = new Vector3(0f, -1.224f, -5.88f);
 
     [Header("Global Game Settings")]
     [Tooltip("Value added to the angry slider when RaiseAngrySlider is triggered")]
@@ -19,4 +19,7 @@ public class CoreGameSettings : ScriptableObject
 
     [Tooltip("Value subtracted to the angry slider when DecreaseAngrySlider is triggered")]
     public float AngrySliderDicreaseAmount;
+
+    [Tooltip("How much ingredients a player can pick at max")]
+    public int MaxPickableIngredients = 5;
 }
