@@ -14,6 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Plat
   Nom: "Feuillet\xE9s au Sainte-Maure de tourraine"
   Icon: {fileID: 0}
+  _modelRaw: {fileID: 919132149155446097, guid: 7e4e63e9f5a593b438052688b0b15336, type: 3}
+  _modelWashed: {fileID: 919132149155446097, guid: 9bec6c2b1d8d475469a73f8188104aac, type: 3}
+  _modelButchered: {fileID: 919132149155446097, guid: ed79b29691da1664e99c7f64ecb249a8, type: 3}
+  _modelCooked: {fileID: 919132149155446097, guid: f2b7742e7e1eb5e4ca900b1a4dd8c443, type: 3}
+  _modelOvercooked: {fileID: 919132149155446097, guid: 6a36ad4b719293e4eb12adb0036dc5e4, type: 3}
+  _modelDressed: {fileID: 919132149155446097, guid: 5d262d90343f9f847a1284f78d8616f7, type: 3}
+  _modelRuined: {fileID: 919132149155446097, guid: aeef9304fae8dbf409aa5137f655ce55, type: 3}
+  _modelFailed: {fileID: 919132149155446097, guid: 79d92148d32ddf24693926e3eb64b7d4, type: 3}
   Ingredients:
   - {fileID: 11400000, guid: b7e1d60e52b39a64893424d7d54898bd, type: 2}
   - {fileID: 11400000, guid: e562322fc1298904fada5f65d229ecdc, type: 2}
