@@ -167,8 +167,8 @@ GameObject:
   - component: {fileID: 6548478317284984222}
   - component: {fileID: 6938147804264892698}
   - component: {fileID: 1212108176554969658}
-  - component: {fileID: 5535775275299433600}
   - component: {fileID: 8996612728815026754}
+  - component: {fileID: 3919261290386522787}
   m_Layer: 6
   m_Name: Board
   m_TagString: Board
@@ -277,24 +277,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1.0000001, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5535775275299433600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5821934071623409817}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15ff99972367ae347b3595cb597b0b56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  _onPlayerEnter:
-    m_PersistentCalls:
-      m_Calls: []
-  _onPlayerExit:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!114 &8996612728815026754
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -324,8 +306,26 @@ MonoBehaviour:
   NonRigidbodyVelocity: 0
   Params: []
   OverrideAttenuation: 0
-  OverrideMinDistance: -1
-  OverrideMaxDistance: -1
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 50
+--- !u!114 &3919261290386522787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5821934071623409817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15ff99972367ae347b3595cb597b0b56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BoardCollisionHandler
+  _onPlayerEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  _onPlayerExit:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &7118693131307902306
 GameObject:
   m_ObjectHideFlags: 0

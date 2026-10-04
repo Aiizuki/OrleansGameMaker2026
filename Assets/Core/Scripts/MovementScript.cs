@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class MovementScript : MonoBehaviour
 {
     [Header("Inputs")] [SerializeField] private InputActionReference _moveLeftAction;
+    [Tooltip("Caméra de référence pour orienter les déplacements. Si vide, prend la caméra taguée MainCamera de la scène.")]
     [SerializeField] private Camera _camera;
     [SerializeField] private InputActionReference _moveRightAction;
     [SerializeField] private InputActionReference _moveForwardAction;
@@ -22,6 +23,10 @@ public class MovementScript : MonoBehaviour
 
     private void Awake()
     {
+        // Le joueur est instancié à l'exécution : un prefab ne peut pas référencer la caméra de la scène
+        if (_camera == null)
+            _camera = Camera.main;
+
         InitEvents();
     }
 

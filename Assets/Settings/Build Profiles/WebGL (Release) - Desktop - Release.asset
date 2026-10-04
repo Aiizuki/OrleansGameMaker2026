@@ -29,7 +29,7 @@ MonoBehaviour:
     m_path: Assets/Scenes/GameScene.unity
     m_guid: 99c9720ab356a0642a771bea13969a05
   - m_enabled: 1
-    m_path: Assets/Scenes/GameOver.unity
+    m_path: Assets/Scenes/GameOverScene.unity
     m_guid: 4c6f85d80654ea3459aa899ef94c5926
   m_HasScriptingDefines: 0
   m_ScriptingDefines: []
