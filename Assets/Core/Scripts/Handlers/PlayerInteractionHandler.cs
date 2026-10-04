@@ -79,7 +79,7 @@ public class PlayerInteractionHandler : MonoBehaviour
     /// </summary>
     public void FlushPlayerInventory()
     {
-        if (_currentOrder == null || _inventory.Count == 0)
+        if (_inventory.Count == 0 && _finishedDish == null)
         {
             Debug.Log("Inventaire vide : rien à replacer dans le stockage");
             return;
