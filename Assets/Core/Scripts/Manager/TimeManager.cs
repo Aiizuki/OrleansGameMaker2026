@@ -12,6 +12,9 @@ namespace Core.Scripts
         private Coroutine _spawnRoutine;
         private bool _isTimeRunning;
 
+        /// <summary>Durée de la partie en secondes, de la fin du décompte au GameOver.</summary>
+        public float ElapsedTime { get; private set; }
+
         void Awake()
         {
             InitEvents();
@@ -25,6 +28,12 @@ namespace Core.Scripts
         void Start()
         {
             StartCoroutine(StartGameRoutine());
+        }
+
+        void Update()
+        {
+            if (_isTimeRunning)
+                ElapsedTime += Time.deltaTime;
         }
 
         /// <summary>

@@ -52,6 +52,12 @@ namespace Core.Enums
         [Description("Raises the angry slider by the amount set in TimeSettings")]
         RaiseAngrySlider,
 
+        [Description("The player served a dish at the counter (param: the PreparedDish)")]
+        DishServed,
+
+        [Description("The player whacked an NPC (param: the NPC GameObject)")]
+        NpcWhacked,
+
         #endregion InGameEvents
         
         #region BackgroundEvents

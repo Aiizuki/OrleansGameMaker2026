@@ -1,4 +1,6 @@
 using System;
+using Core.Enums;
+using Core.Scripts;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -38,6 +40,7 @@ public class WhackingHandler : MonoBehaviour
         {
             Debug.Log("TIENS PRENDS CA BATAR");
             CurrentVictim.gameObject.GetComponent<CleaningIAScript>().Whacked();
+            UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.NpcWhacked), CurrentVictim);
         }
         else
         {
