@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public enum AiState {
@@ -19,22 +20,28 @@ public enum MoveDestination
 public class CleaningIAScript : MonoBehaviour
 {
 
-    [SerializeField] GameObject StarEmitter;
-    [SerializeField] private Animator _animatorController;
-
-    public GameObject hands;
-    public Canvas exclamationMark;
+    [Header("------- Parametres -------")]
     public float speed;
     public float workTime;
     public float failTime;
     public float chanceToFail;
+    
+    [Space(10)]
+    [Header("--------- Setups ---------")]
+    [SerializeField] GameObject StarEmitter;
+    [SerializeField] private Animator _animatorController; 
+    public GameObject hands;
+    public Canvas exclamationMark;
     public List<GameObject> PathToInput;
     public List<GameObject> PathFromInput;
     public List<GameObject> PathToOutput;
     public List<GameObject> PathFromOutput;
     public GameObject MyStation;
     public GameObject NextStation;
-
+    public UnityEvent ReactToPickup;
+    public UnityEvent ReactToBeWhacked;
+    
+    
     private int _path;
     private GameObject _objectInHands;
     private float _workTimer;
@@ -188,6 +195,7 @@ public class CleaningIAScript : MonoBehaviour
         _object.transform.parent = hands.transform;
         _object.transform.localPosition = Vector3.zero;
         _objectInHands = _object;
+        ReactToPickup.Invoke();
     }
 
     private List<GameObject> GetPath(int pathID)
@@ -261,7 +269,7 @@ public class CleaningIAScript : MonoBehaviour
         {
             Debug.Log("MAIS J'AI RIEN FAIT :(");
         }
-
+        ReactToBeWhacked.Invoke();
         Instantiate(StarEmitter, exclamationMark.transform.position - (Vector3.up * 0.5f), Quaternion.Euler(-90,0,0));
     }
 

@@ -137,6 +137,69 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &415311607734391575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6403442051972461839}
+  - component: {fileID: 2264880793058720988}
+  m_Layer: 8
+  m_Name: Wacked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6403442051972461839
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415311607734391575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 196078213592189059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2264880793058720988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 415311607734391575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -10222959
+      Data2: 1316521359
+      Data3: -1112099701
+      Data4: 1690641862
+    Path: event:/Sons/Scold
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &590761917578669103
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,6 +352,69 @@ MonoBehaviour:
   objectAtInput: {fileID: 0}
   objectAtInventory: {fileID: 0}
   objectAtOutput: {fileID: 0}
+--- !u!1 &2198094693253585250
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6779700287960422758}
+  - component: {fileID: 4968449573122194789}
+  m_Layer: 8
+  m_Name: TakeDish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6779700287960422758
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198094693253585250}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4981636020150264012}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4968449573122194789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2198094693253585250}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1880201844
+      Data2: 1321063508
+      Data3: -1678063173
+      Data4: 1873092741
+    Path: event:/Sons/TakeUtensils
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2333636085478918363
 GameObject:
   m_ObjectHideFlags: 0
@@ -320,6 +446,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 8812344236880305541}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2370215719603839688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5105945900696432059}
+  - component: {fileID: 48314851036518950}
+  m_Layer: 8
+  m_Name: Wacked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5105945900696432059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370215719603839688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2276607808380310682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &48314851036518950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2370215719603839688}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -10222959
+      Data2: 1316521359
+      Data3: -1112099701
+      Data4: 1690641862
+    Path: event:/Sons/Scold
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &2669362929902682409
 GameObject:
   m_ObjectHideFlags: 0
@@ -455,6 +644,39 @@ Transform:
   - {fileID: 3475227991282685366}
   m_Father: {fileID: 3634424520114942170}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3440779564778230711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 196078213592189059}
+  m_Layer: 8
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &196078213592189059
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440779564778230711}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 6403442051972461839}
+  - {fileID: 4283563860880244544}
+  m_Father: {fileID: 8081009612232140170}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3750156402186993715
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +780,39 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!1 &4142545655740635573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4981636020150264012}
+  m_Layer: 8
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4981636020150264012
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4142545655740635573}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.41, y: 0, z: 4.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 8457246880462732765}
+  - {fileID: 6779700287960422758}
+  m_Father: {fileID: 3634424520114942170}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4158936859456525508
 GameObject:
   m_ObjectHideFlags: 0
@@ -827,6 +1082,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1403275847899038728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4908687421003249342
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7463964881078950717}
+  - component: {fileID: 5032899754919058410}
+  m_Layer: 8
+  m_Name: TakeDish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7463964881078950717
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908687421003249342}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2276607808380310682}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5032899754919058410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908687421003249342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1880201844
+      Data2: 1321063508
+      Data3: -1678063173
+      Data4: 1873092741
+    Path: event:/Sons/TakeUtensils
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &4961707622425794059
 GameObject:
   m_ObjectHideFlags: 0
@@ -1119,6 +1437,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1403275847899038728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6218478136786897958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8457246880462732765}
+  - component: {fileID: 179089476573919995}
+  m_Layer: 8
+  m_Name: Wacked
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8457246880462732765
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218478136786897958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4981636020150264012}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179089476573919995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6218478136786897958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -10222959
+      Data2: 1316521359
+      Data3: -1112099701
+      Data4: 1690641862
+    Path: event:/Sons/Scold
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &6327613060062025465
 GameObject:
   m_ObjectHideFlags: 0
@@ -1181,6 +1562,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 9100757906726409339}
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &6761122951913924775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2276607808380310682}
+  m_Layer: 8
+  m_Name: Sounds
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2276607808380310682
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6761122951913924775}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 4.7300014, y: 0, z: -9.54}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5105945900696432059}
+  - {fileID: 7463964881078950717}
+  m_Father: {fileID: 8812344236880305541}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6812416161067126748
 GameObject:
   m_ObjectHideFlags: 0
@@ -1545,6 +1959,69 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1403275847899038728}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8003572175038926877
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4283563860880244544}
+  - component: {fileID: 2737689380855041945}
+  m_Layer: 8
+  m_Name: TakeDish
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4283563860880244544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8003572175038926877}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 196078213592189059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2737689380855041945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8003572175038926877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: 1880201844
+      Data2: 1321063508
+      Data3: -1678063173
+      Data4: 1873092741
+    Path: event:/Sons/TakeUtensils
+  Event: 
+  EventPlayTrigger: 0
+  EventStopTrigger: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1 &8153935658780342663
 GameObject:
   m_ObjectHideFlags: 0
@@ -1675,6 +2152,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1011567732300982985}
   - component: {fileID: 798723898799575303}
+  - component: {fileID: 8302837254821901489}
   m_Layer: 0
   m_Name: IAGroup
   m_TagString: Untagged
@@ -1723,6 +2201,37 @@ MonoBehaviour:
   cleaningStation: {fileID: 2059854449574879905}
   dressingStation: {fileID: 4741169931372513372}
   pickupStations: {fileID: 4801619983380880847}
+--- !u!114 &8302837254821901489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9193850810371614546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: FMODUnity::FMODUnity.StudioEventEmitter
+  CollisionTag: 
+  EventReference:
+    Guid:
+      Data1: -823947273
+      Data2: 1286514885
+      Data3: 1517623171
+      Data4: 448900360
+    Path: event:/Ambiances/CuisineAmbiance
+  Event: 
+  EventPlayTrigger: 1
+  EventStopTrigger: 2
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  NonRigidbodyVelocity: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 1
+  OverrideMaxDistance: 20
 --- !u!1001 &3889606655529637681
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1796,6 +2305,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c36f970f448b5b48985136de2432818, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5560187595885035221}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4981636020150264012}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c36f970f448b5b48985136de2432818, type: 3}
       insertIndex: -1
@@ -1826,14 +2338,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc44570bfe4926b4c974691dcd77b910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleaningIAScript
-  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
-  _animatorController: {fileID: 7246358925695937184}
-  hands: {fileID: 2001464914426488725}
-  exclamationMark: {fileID: 8342979369076923281}
   speed: 0.1
   workTime: 5
   failTime: 8
   chanceToFail: 0.2
+  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  _animatorController: {fileID: 7246358925695937184}
+  hands: {fileID: 2001464914426488725}
+  exclamationMark: {fileID: 8342979369076923281}
   PathToInput:
   - {fileID: 5897125690770063128}
   PathFromInput:
@@ -1844,6 +2356,36 @@ MonoBehaviour:
   - {fileID: 4741169931372513372}
   MyStation: {fileID: 4741169931372513372}
   NextStation: {fileID: 4801619983380880847}
+  ReactToPickup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4968449573122194789}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ReactToBeWhacked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 179089476573919995}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &6717238000833131406
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1943,6 +2485,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c36f970f448b5b48985136de2432818, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5438246063710229892}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 196078213592189059}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c36f970f448b5b48985136de2432818, type: 3}
       insertIndex: -1
@@ -1978,14 +2523,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc44570bfe4926b4c974691dcd77b910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleaningIAScript
-  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
-  _animatorController: {fileID: 2793832356830576624}
-  hands: {fileID: 6327613060062025465}
-  exclamationMark: {fileID: 1174338811714887183}
   speed: 0.1
   workTime: 5
   failTime: 8
   chanceToFail: 0.2
+  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  _animatorController: {fileID: 2793832356830576624}
+  hands: {fileID: 6327613060062025465}
+  exclamationMark: {fileID: 1174338811714887183}
   PathToInput:
   - {fileID: 8325400414654052109}
   PathFromInput:
@@ -1996,6 +2541,36 @@ MonoBehaviour:
   - {fileID: 8153935658780342663}
   MyStation: {fileID: 8153935658780342663}
   NextStation: {fileID: 4741169931372513372}
+  ReactToPickup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2737689380855041945}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ReactToBeWhacked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2264880793058720988}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &8232259347843420973
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2090,6 +2665,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c36f970f448b5b48985136de2432818, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9033344313607789939}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2276607808380310682}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c36f970f448b5b48985136de2432818, type: 3}
       insertIndex: -1
@@ -2120,14 +2698,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc44570bfe4926b4c974691dcd77b910, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
-  _animatorController: {fileID: 3218825445362092031}
-  hands: {fileID: 2333636085478918363}
-  exclamationMark: {fileID: 1797126130649692282}
   speed: 0.1
   workTime: 5
   failTime: 8
   chanceToFail: 0.2
+  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  _animatorController: {fileID: 3218825445362092031}
+  hands: {fileID: 2333636085478918363}
+  exclamationMark: {fileID: 1797126130649692282}
   PathToInput:
   - {fileID: 6902600680170733346}
   PathFromInput:
@@ -2140,6 +2718,36 @@ MonoBehaviour:
   - {fileID: 2059854449574879905}
   MyStation: {fileID: 2059854449574879905}
   NextStation: {fileID: 8153935658780342663}
+  ReactToPickup:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5032899754919058410}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  ReactToBeWhacked:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 48314851036518950}
+        m_TargetAssemblyTypeName: FMODUnity.StudioEventEmitter, FMODUnity
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!65 &2139760252096668794
 BoxCollider:
   m_ObjectHideFlags: 0
