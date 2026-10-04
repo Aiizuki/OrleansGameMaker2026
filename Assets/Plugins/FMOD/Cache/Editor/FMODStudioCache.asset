@@ -135,6 +135,33 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 0
+--- !u!114 &-5726506515440569524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Musics/WaitingMusic
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Musics/WaitingMusic
+  Guid:
+    Data1: -1510711317
+    Data2: 1194932363
+    Data3: 1025207996
+    Data4: 781653981
+  Banks:
+  - {fileID: 3536507666506997273}
+  IsStream: 1
+  Is3D: 0
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 129000
 --- !u!114 &-4947086163032323229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,13 +454,14 @@ MonoBehaviour:
   - {fileID: 2134478865687628366}
   - {fileID: 2514045520552964661}
   - {fileID: -2313739389206376639}
+  - {fileID: -5726506515440569524}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3536507666506997273}
   StringsBanks:
   - {fileID: 3388455998225100526}
   cacheVersion: 131861
-  cacheTime: 639267234612242986
+  cacheTime: 639267348302226166
   SerializableEventsDict:
   - key: event:/Sons/PutToTrash
     index: 0
@@ -465,6 +493,8 @@ MonoBehaviour:
     index: 13
   - key: event:/Sons/TakeIngredients
     index: 14
+  - key: event:/Musics/WaitingMusic
+    index: 15
 --- !u!114 &559478730939801396
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,10 +645,10 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639267234612242986
+  lastModified: 639267348302226166
   FileSizes:
   - Name: 
-    Value: 1418
+    Value: 1472
   Exists: 1
 --- !u!114 &3536507666506997273
 MonoBehaviour:
@@ -635,7 +665,7 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639267234612237965
+  lastModified: 639267348302196281
   FileSizes: []
   Exists: 1
 --- !u!114 &3856259593804356942
