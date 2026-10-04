@@ -335,13 +335,13 @@ MonoBehaviour:
     Data4: -2100417866
   Banks:
   - {fileID: 3536507666506997273}
-  IsStream: 0
+  IsStream: 1
   Is3D: 1
-  IsOneShot: 1
+  IsOneShot: 0
   Parameters: []
   MinDistance: 1
   MaxDistance: 20
-  Length: 0
+  Length: 56000
 --- !u!114 &-353380454587831338
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,15 +398,15 @@ MonoBehaviour:
   - {fileID: -8323903510866301951}
   - {fileID: 7764479772505859824}
   - {fileID: 2134478865687628366}
-  - {fileID: 2575506658701204387}
   - {fileID: 2514045520552964661}
+  - {fileID: 8538424483422242520}
   EditorParameters: []
   MasterBanks:
   - {fileID: 3536507666506997273}
   StringsBanks:
   - {fileID: 3388455998225100526}
   cacheVersion: 131861
-  cacheTime: 639266604086770321
+  cacheTime: 639267091059924990
   SerializableEventsDict:
   - key: event:/Sons/PutToTrash
     index: 0
@@ -546,33 +546,6 @@ MonoBehaviour:
   MinDistance: 1
   MaxDistance: 20
   Length: 39795
---- !u!114 &2575506658701204387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
-  m_Name: event:/Sons/GiveOrder
-  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
-  Path: event:/Sons/GiveOrder
-  Guid:
-    Data1: -551920652
-    Data2: 1101210540
-    Data3: -1385473093
-    Data4: -859902003
-  Banks:
-  - {fileID: 3536507666506997273}
-  IsStream: 0
-  Is3D: 1
-  IsOneShot: 1
-  Parameters: []
-  MinDistance: 1
-  MaxDistance: 20
-  Length: 0
 --- !u!114 &3023938723903927627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -615,10 +588,10 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639266604086770321
+  lastModified: 639267091059924990
   FileSizes:
   - Name: 
-    Value: 1424
+    Value: 1418
   Exists: 1
 --- !u!114 &3536507666506997273
 MonoBehaviour:
@@ -635,7 +608,7 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639266604086755349
+  lastModified: 639267091059895070
   FileSizes: []
   Exists: 1
 --- !u!114 &3856259593804356942
@@ -896,6 +869,33 @@ MonoBehaviour:
   - {fileID: 3536507666506997273}
   IsStream: 0
   Is3D: 0
+  IsOneShot: 1
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 0
+--- !u!114 &8538424483422242520
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: event:/Sons/TakeIngredients
+  m_EditorClassIdentifier: FMODUnityEditor::FMODUnity.EditorEventRef
+  Path: event:/Sons/TakeIngredients
+  Guid:
+    Data1: 245295461
+    Data2: 1137441209
+    Data3: -956137061
+    Data4: -942894231
+  Banks:
+  - {fileID: 3536507666506997273}
+  IsStream: 0
+  Is3D: 1
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
