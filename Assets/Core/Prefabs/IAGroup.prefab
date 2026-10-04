@@ -1783,6 +1783,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Victime
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 32d2d50ed35dc7e4a9a44b915c6b8c12, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1823,6 +1827,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleaningIAScript
   StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  _animatorController: {fileID: 7246358925695937184}
   hands: {fileID: 2001464914426488725}
   exclamationMark: {fileID: 8342979369076923281}
   speed: 0.1
@@ -1860,6 +1865,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0.96155953, z: 0.10054447}
+--- !u!95 &7246358925695937184 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+  m_PrefabInstance: {fileID: 3889606655529637681}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8624175652320330337
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1920,6 +1930,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Victime
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 32d2d50ed35dc7e4a9a44b915c6b8c12, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1937,6 +1951,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8232259347843420973}
   m_SourcePrefab: {fileID: 100100000, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+--- !u!95 &2793832356830576624 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+  m_PrefabInstance: {fileID: 8624175652320330337}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8081009612232140170 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3c36f970f448b5b48985136de2432818, type: 3}
@@ -1960,6 +1979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CleaningIAScript
   StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  _animatorController: {fileID: 2793832356830576624}
   hands: {fileID: 6327613060062025465}
   exclamationMark: {fileID: 1174338811714887183}
   speed: 0.1
@@ -2057,6 +2077,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Victime
       objectReference: {fileID: 0}
+    - target: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 32d2d50ed35dc7e4a9a44b915c6b8c12, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -2074,6 +2098,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 2139760252096668794}
   m_SourcePrefab: {fileID: 100100000, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+--- !u!95 &3218825445362092031 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3c36f970f448b5b48985136de2432818, type: 3}
+  m_PrefabInstance: {fileID: 9061529533316561518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &8142627734129362751 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3c36f970f448b5b48985136de2432818, type: 3}
@@ -2092,6 +2121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  _animatorController: {fileID: 3218825445362092031}
   hands: {fileID: 2333636085478918363}
   exclamationMark: {fileID: 1797126130649692282}
   speed: 0.1

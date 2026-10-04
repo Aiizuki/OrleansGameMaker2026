@@ -20,6 +20,7 @@ public class CleaningIAScript : MonoBehaviour
 {
 
     [SerializeField] GameObject StarEmitter;
+    [SerializeField] private Animator _animatorController;
 
     public GameObject hands;
     public Canvas exclamationMark;
@@ -60,6 +61,7 @@ public class CleaningIAScript : MonoBehaviour
         if (_workTimer > 0 && _aiState == AiState.Working)
         {
             //working
+            _animatorController.SetBool("Working", true);
             _workTimer -= Time.deltaTime;
             if (exclamationMark.isActiveAndEnabled)
             {
@@ -70,6 +72,7 @@ public class CleaningIAScript : MonoBehaviour
         if (_workTimer <= 0 && _aiState == AiState.Working)
         {
             //end of work
+            _animatorController.SetBool("Working", false);
             if (_isFailing)
             {
                 
@@ -148,14 +151,15 @@ public class CleaningIAScript : MonoBehaviour
     {
         if (_aiState == AiState.Moving)
         {
+            _animatorController.SetBool("Walking", true);
             _movementDirection = GetPath(_path)[_moveStep].transform.position - transform.position;
             _movementDirection.Normalize();
             transform.rotation = Quaternion.LookRotation(_movementDirection);
             _movementDirection = _movementDirection * speed;
-            
+
             if (Vector3.Distance(transform.position, GetPath(_path)[_moveStep].transform.position) < 0.1f)
             {
-                if (_moveStep < GetPath(_path).Count - 1 )
+                if (_moveStep < GetPath(_path).Count - 1)
                 {
                     _moveStep++;
                 }
@@ -170,6 +174,7 @@ public class CleaningIAScript : MonoBehaviour
                 transform.position += _movementDirection;
             }
         }
+        else _animatorController.SetBool("Walking", false);
     }
 
     private void LookAround()
