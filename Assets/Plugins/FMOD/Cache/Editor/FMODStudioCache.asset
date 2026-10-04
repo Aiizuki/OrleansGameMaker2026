@@ -461,7 +461,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3388455998225100526}
   cacheVersion: 131861
-  cacheTime: 639267348302226166
+  cacheTime: 639267363320062790
   SerializableEventsDict:
   - key: event:/Sons/PutToTrash
     index: 0
@@ -645,7 +645,7 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639267348302226166
+  lastModified: 639267363320062790
   FileSizes:
   - Name: 
     Value: 1472
@@ -665,7 +665,7 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639267348302196281
+  lastModified: 639267363320042681
   FileSizes: []
   Exists: 1
 --- !u!114 &3856259593804356942
