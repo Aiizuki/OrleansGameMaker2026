@@ -2314,7 +2314,8 @@ MonoBehaviour:
   workTime: 5
   failTime: 8
   chanceToFail: 0.2
-  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  StarEmitter: {fileID: 5859065603216283639, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  DustEmitter: {fileID: 5859065603216283639, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
   _animatorController: {fileID: 7246358925695937184}
   hands: {fileID: 2001464914426488725}
   exclamationMark: {fileID: 8342979369076923281}
@@ -2503,7 +2504,8 @@ MonoBehaviour:
   workTime: 5
   failTime: 8
   chanceToFail: 0.2
-  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  StarEmitter: {fileID: 5859065603216283639, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  DustEmitter: {fileID: 5859065603216283639, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
   _animatorController: {fileID: 2793832356830576624}
   hands: {fileID: 6327613060062025465}
   exclamationMark: {fileID: 1174338811714887183}
@@ -2682,7 +2684,8 @@ MonoBehaviour:
   workTime: 5
   failTime: 8
   chanceToFail: 0.2
-  StarEmitter: {fileID: 2099488792322951094, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  StarEmitter: {fileID: 5859065603216283639, guid: 09e7c98c804e0e848a8e90da0428cdad, type: 3}
+  DustEmitter: {fileID: 5859065603216283639, guid: c708b34b39891534487280cbc66f5cc6, type: 3}
   _animatorController: {fileID: 3218825445362092031}
   hands: {fileID: 2333636085478918363}
   exclamationMark: {fileID: 1797126130649692282}

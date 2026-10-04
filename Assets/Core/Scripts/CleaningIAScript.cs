@@ -26,7 +26,8 @@ public class CleaningIAScript : MonoBehaviour
     
     [Space(10)]
     [Header("--------- Setups ---------")]
-    [SerializeField] GameObject StarEmitter;
+    [SerializeField] ParticleSystem StarEmitter;
+    [SerializeField] ParticleSystem DustEmitter;
     [SerializeField] private Animator _animatorController; 
     public GameObject hands;
     public Canvas exclamationMark;
@@ -66,6 +67,8 @@ public class CleaningIAScript : MonoBehaviour
         if (_workTimer > 0 && _aiState == AiState.Working)
         {
             //working
+            if (!DustEmitter.isPlaying)
+                DustEmitter.Play();
             _animatorController.SetBool("Working", true);
             _workTimer -= Time.deltaTime;
             if (exclamationMark.isActiveAndEnabled)
@@ -78,6 +81,7 @@ public class CleaningIAScript : MonoBehaviour
         {
             //end of work
             _animatorController.SetBool("Working", false);
+            DustEmitter.Stop();
             StationScript station = MyStation.GetComponent<StationScript>();
             
             // Étape + échec appliqués ensemble : un seul changement de modèle (et un seul woosh)
@@ -89,7 +93,8 @@ public class CleaningIAScript : MonoBehaviour
             }
             _aiState = AiState.Idle;
         }
-        
+        Debug.Log(DustEmitter.isPlaying);
+        Debug.Log(DustEmitter.transform.position);
         if (_aiState == AiState.Idle && _shouldGoToOutput && ! (_objectInHands != null))
         {
             if (Vector3.Distance(transform.position, _theStation.GetComponent<StationScript>().StationInventory.transform.position) > 0.2f)

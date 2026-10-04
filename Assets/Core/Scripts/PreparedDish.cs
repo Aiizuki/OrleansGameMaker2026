@@ -114,10 +114,20 @@ public class PreparedDish : MonoBehaviour
     {
         // TODO: brancher le vrai particle system de woosh
         if (_wooshParticles == null)
+        {
             return;
-
-        _wooshParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
         _wooshParticles.Play();
+        if (_wooshParticles.isPlaying)
+        {
+            Debug.Log("playing");
+        }
+        if (_wooshParticles.isStopped)
+        {
+            Debug.Log("stopped");
+        }
+        //_wooshParticles.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        
     }
 
     #region UnityEvents
