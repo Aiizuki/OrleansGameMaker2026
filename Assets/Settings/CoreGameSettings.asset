@@ -16,6 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a2a7949cdd3ec7f4bbae9027baf6fa7d, type: 2}
   - {fileID: 11400000, guid: 8f063d312cf277f489656c225a1078e8, type: 2}
   - {fileID: 11400000, guid: 5ab3c1e6bd3755345b55af12a626b330, type: 2}
+  - {fileID: 11400000, guid: 931c2d2a261d94948af981abc3b64959, type: 2}
   Speed: 10
   SpawnPosition: {x: 0, y: -1.224, z: -5.88}
   AngrySliderRaiseAmount: 0.2
