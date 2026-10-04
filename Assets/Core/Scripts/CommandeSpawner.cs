@@ -16,9 +16,11 @@ namespace Core.Scripts
         [SerializeField] private CoreGameSettings _settings;
         [SerializeField] private List<GameObject> _lstSpawnPoints;
         [SerializeField] private GameObject _orderPrefab;
+        
         public UnityEvent ReactToNewOrder;
         
         private List<Plat> _lstSpawnablePlats;
+        private int _nbrOfOrderWaiting = 0;
         
         // Point de spawn -> commande qui l'occupe (null si libre)
         public Dictionary<GameObject, GameObject> _spawnMatrix;
@@ -70,6 +72,7 @@ namespace Core.Scripts
                 ticket = commande.AddComponent<OrderTicket>();
             }
             ticket.Init(plat);
+            _nbrOfOrderWaiting++;
             _spawnMatrix[spawnPoint] = commande;
             UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.SpawnStorage), plat);
 
@@ -99,6 +102,7 @@ namespace Core.Scripts
 
             var plat = commande.GetComponent<OrderTicket>().Plat;
             Debug.Log("J'ai pris la commande de " + plat.Nom);
+            _nbrOfOrderWaiting--;
 
             _spawnMatrix[orderTicket.Key] = null;
             Destroy(commande); // TODO : faire un PlayerInventoryManager qui réagit à cet event pour récupérer la commande
@@ -126,6 +130,11 @@ namespace Core.Scripts
             UnityEventManager.RemoveListener(nameof(EnumUnityEventName.TakeOrder), TakeCommande);
         }
 
+        public int GetNbrOfCommande()
+        {
+            return _nbrOfOrderWaiting;
+        }
+        
         #endregion UnityEvents
     }
 }

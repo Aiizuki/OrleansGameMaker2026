@@ -7,6 +7,7 @@ namespace Core.Scripts
     public class TimeManager : MonoBehaviour
     {
         [SerializeField] private TimeSettings _settings;
+        public GameObject CommandeManagerInScene;
 
         private Coroutine _spawnRoutine;
         private bool _isTimeRunning;
@@ -79,8 +80,14 @@ namespace Core.Scripts
             while (true)
             {
                 UnityEventManager.TriggerEvent(nameof(EnumUnityEventName.SpawnCommande));
-                yield return new WaitForSeconds(_settings.OrderSpawnInterval);
+                yield return new WaitForSeconds(GetSpawnInterval());
             }
+        }
+
+        private float GetSpawnInterval()
+        {
+            Debug.Log(_settings.OrderSpawnInterval + (_settings.OrderSpawnInterval * CommandeManagerInScene.GetComponent<CommandeSpawner>().GetNbrOfCommande()));
+            return _settings.OrderSpawnInterval + (_settings.OrderSpawnInterval * CommandeManagerInScene.GetComponent<CommandeSpawner>().GetNbrOfCommande());
         }
 
         #region UnityEvents

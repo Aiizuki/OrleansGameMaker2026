@@ -1216,6 +1216,11 @@ Transform:
   - {fileID: 39950064}
   m_Father: {fileID: 1092382814}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &782573190 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7118693131307902306, guid: 816a29199a2608543b8c20447463fe46, type: 3}
+  m_PrefabInstance: {fileID: 8596957555021470783}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &798684377
 GameObject:
   m_ObjectHideFlags: 0
@@ -1714,7 +1719,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 99533f6f88f0439cb7bbd3a01958b81f, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Scripts.AngrySliderHandler
   _slider: {fileID: 908222075}
   _timerSettings: {fileID: 11400000, guid: 38966c563ed80b448993271bb8e18300, type: 2}
@@ -1734,7 +1739,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c33d231951990c48a2087b140c40424, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CountdownUIDisplayer
   _countdownText: {fileID: 1907249905}
   _goText: GO!
@@ -2189,6 +2194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Core.Scripts.TimeManager
   _settings: {fileID: 11400000, guid: 38966c563ed80b448993271bb8e18300, type: 2}
+  CommandeManagerInScene: {fileID: 782573190}
 --- !u!114 &1227484396
 MonoBehaviour:
   m_ObjectHideFlags: 0

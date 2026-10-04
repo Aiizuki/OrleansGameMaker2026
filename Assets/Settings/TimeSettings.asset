@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27435b4dd924993438ee279b8894e715, type: 3}
   m_Name: TimeSettings
   m_EditorClassIdentifier: Assembly-CSharp::TimeSettings
-  OrderSpawnInterval: 30
+  StartCountdownDuration: 3
+  OrderSpawnInterval: 5
+  OrderSpawnDelta: 3
   AngrySliderEmptyDuration: 120

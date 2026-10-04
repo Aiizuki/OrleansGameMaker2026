@@ -11,6 +11,9 @@ public class TimeSettings : ScriptableObject
 
     [FormerlySerializedAs("orderSpawnInterval")] [Tooltip("Time (in seconds) before spawning an order")]
     public float OrderSpawnInterval;
+    
+    [FormerlySerializedAs("orderSpawnInterval")] [Tooltip("Time (in seconds) before spawning an order")]
+    public float OrderSpawnDelta;
 
     [FormerlySerializedAs("angrySliderEmptyDuration")] [Tooltip("Time (in seconds) for the angry slider to go from full to empty")]
     public float AngrySliderEmptyDuration = 120f;
