@@ -16,6 +16,7 @@ public class ButtonsManager : MonoBehaviour
     protected void OnEnable()
     {
         this.GetComponent<Button>().interactable = true;
+        _imagePanel.SetActive(false);
     }
 
     protected void OnDisable()
@@ -25,6 +26,10 @@ public class ButtonsManager : MonoBehaviour
 
     #endregion Unity Lifecycle
 
+    [SerializeField] private GameObject _imagePanel;
+    
+    
+    
     public void FireReturnToHomeEvent()
     {
         PlayBack();
@@ -65,6 +70,11 @@ public class ButtonsManager : MonoBehaviour
 
         if (preventSpam)
             StartCoroutine(PreventSpamClickRoutine());
+    }
+
+    public void TutoButtonClick()
+    {
+        _imagePanel.SetActive(true);
     }
 
     private IEnumerator PreventSpamClickRoutine()
