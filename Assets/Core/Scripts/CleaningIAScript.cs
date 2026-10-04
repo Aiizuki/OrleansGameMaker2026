@@ -66,6 +66,7 @@ public class CleaningIAScript : MonoBehaviour
         if (_workTimer > 0 && _aiState == AiState.Working)
         {
             //working
+            _animatorController.SetBool("Working", true);
             _workTimer -= Time.deltaTime;
             if (exclamationMark.isActiveAndEnabled)
             {
@@ -156,6 +157,7 @@ public class CleaningIAScript : MonoBehaviour
     {
         if (_aiState == AiState.Moving)
         {
+            _animatorController.SetBool("Walking", true);
             _movementDirection = GetPath(_path)[_moveStep].transform.position - transform.position;
             _movementDirection.Normalize();
             transform.rotation = Quaternion.LookRotation(_movementDirection);
@@ -267,6 +269,7 @@ public class CleaningIAScript : MonoBehaviour
             Debug.Log("MAIS J'AI RIEN FAIT :(");
         }
         ReactToBeWhacked.Invoke();
+        _animatorController.SetTrigger("Hit");
         Instantiate(StarEmitter, exclamationMark.transform.position - (Vector3.up * 0.5f), Quaternion.Euler(-90,0,0));
     }
 
