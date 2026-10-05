@@ -25,7 +25,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 85
+  MaxDistance: 100
   Length: 0
 --- !u!114 &-8278258409488356835
 MonoBehaviour:
@@ -461,7 +461,7 @@ MonoBehaviour:
   StringsBanks:
   - {fileID: 3388455998225100526}
   cacheVersion: 131861
-  cacheTime: 639267363320062790
+  cacheTime: 639268188186857433
   SerializableEventsDict:
   - key: event:/Sons/PutToTrash
     index: 0
@@ -574,7 +574,7 @@ MonoBehaviour:
   IsOneShot: 1
   Parameters: []
   MinDistance: 1
-  MaxDistance: 85
+  MaxDistance: 100
   Length: 0
 --- !u!114 &2514045520552964661
 MonoBehaviour:
@@ -645,7 +645,7 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.strings.bank
   Name: Master.strings
   StudioPath: bank:/Master.strings
-  lastModified: 639267363320062790
+  lastModified: 639268188186857433
   FileSizes:
   - Name: 
     Value: 1472
@@ -665,7 +665,7 @@ MonoBehaviour:
   Path: FmodLa/Desktop/Master.bank
   Name: Master
   StudioPath: bank:/Master
-  lastModified: 639267363320042681
+  lastModified: 639268188186827595
   FileSizes: []
   Exists: 1
 --- !u!114 &3856259593804356942
